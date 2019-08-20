@@ -1,0 +1,51 @@
+from alphasolver import *
+from MyDialog import *
+
+
+root = Tk()
+root.withdraw()     # hide the little root window
+
+
+def main():
+    d = MyDialog_GameFiles(root, "Game Files")
+    game_files = d.result
+
+    if game_files:
+        print('\ngame files are: {}\n'.format(game_files))
+
+        # load data from files
+        load_success, puzzle, dictionary = load_data(game_files)
+
+        # parse data
+        board = get_element(puzzle, 'board')
+        letters = get_element(puzzle, 'letters')
+        fixed_number_letters = get_fixed_number_letters(letters)
+
+        board_floating_number_letters = get_board_floating_number_letters(board, fixed_number_letters)
+        letter_board = generate_letter_board(board, board_floating_number_letters, fixed_number_letters)
+        # nparray_board = np.array(board)
+        # nparray_letter_board = np.array(letter_board)
+
+        print('puzzle = \n{}'.format(puzzle))
+        print('fixed_number_letters = {}'.format(fixed_number_letters))
+        pprint.pprint('board = \n{}'.format(board))
+        pprint.pprint('board_floating_number_letters = \n{}'.format(board_floating_number_letters))
+        pprint.pprint('letter_board = \n{}'.format(letter_board))
+
+        solved, new_fixed_number_letters = solve_puzzle(0, board, fixed_number_letters, dictionary)
+        if solved:
+            board_floating_number_letters = get_board_floating_number_letters(board, new_fixed_number_letters)
+            letter_board = generate_letter_board(board, board_floating_number_letters, new_fixed_number_letters)
+            pprint.pprint('board_floating_number_letters = \n{}'.format(board_floating_number_letters))
+            pprint.pprint('letter_board = \n{}'.format(letter_board))
+
+    root.mainloop()
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
