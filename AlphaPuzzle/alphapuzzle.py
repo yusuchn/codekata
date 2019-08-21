@@ -22,22 +22,23 @@ def main():
         fixed_number_letters = get_fixed_number_letters(letters)
 
         board_floating_number_letters = get_board_floating_number_letters(board, fixed_number_letters)
-        letter_board = generate_letter_board(board, board_floating_number_letters, fixed_number_letters)
-        # nparray_board = np.array(board)
-        # nparray_letter_board = np.array(letter_board)
+        original_letter_board = generate_letter_board(board, board_floating_number_letters, fixed_number_letters)
+        nparray_board = np.array(board)
+        nparray_original_letter_board = np.array(original_letter_board)
 
         print('puzzle = \n{}'.format(puzzle))
         print('fixed_number_letters = {}'.format(fixed_number_letters))
         pprint.pprint('board = \n{}'.format(board))
-        pprint.pprint('board_floating_number_letters = \n{}'.format(board_floating_number_letters))
-        pprint.pprint('letter_board = \n{}'.format(letter_board))
+        print('nparray_board = \n{}'.format(nparray_board))
+        print('nparray_original_letter_board = \n{}'.format(nparray_original_letter_board))
 
-        solved, new_fixed_number_letters = solve_puzzle(0, board, fixed_number_letters, dictionary)
+        solved, new_fixed_number_letters, solved_letter_board = solve_puzzle(0, board, fixed_number_letters, dictionary)
         if solved:
-            board_floating_number_letters = get_board_floating_number_letters(board, new_fixed_number_letters)
-            letter_board = generate_letter_board(board, board_floating_number_letters, new_fixed_number_letters)
-            pprint.pprint('board_floating_number_letters = \n{}'.format(board_floating_number_letters))
-            pprint.pprint('letter_board = \n{}'.format(letter_board))
+            # for some reason, the returning value of new_fixed_number_letters doesn't give the correct value
+            # uncomment the following line to see the phenomena
+            # pprint.pprint('fixed_number_letters = \n{}'.format(new_fixed_number_letters))
+            nparray_solved_letter_board = np.array(solved_letter_board)
+            print('nparray_solved_letter_board = \n{}'.format(nparray_solved_letter_board))
 
     root.mainloop()
 

@@ -258,14 +258,15 @@ def extract_candidate_words_from_dictionary(number_list_of_the_word_param, dicti
 # are recursively being updated, ordered_list_of_word_numbers_param and dictionary_param are constant
 def solve_puzzle(iteration, board_param, fixed_number_letters_param, dictionary_param):
     board_floating_number_letters = get_board_floating_number_letters(board_param, fixed_number_letters_param)
-    print('solver, iteration {}: board_floating_number_letters = {}'.format(iteration, board_floating_number_letters))
     ordered_list_of_word_numbers = get_ordered_list_of_word_numbers_by_prob(board_param, fixed_number_letters_param)
-    print('solver, iteration {}: ordered_list_of_word_numbers = {}'.format(iteration, ordered_list_of_word_numbers))
 
     # if( not ordered_list_of_word_numbers or
     #     len(ordered_list_of_word_numbers) == 0 ):
     if len(board_floating_number_letters) == 0:
-        return True, fixed_number_letters_param     # copy.deepcopy(fixed_number_letters_param)
+        print('solver, iteration {}: for testing, len(board_floating_number_letters) = 0, returning: \n '
+              'True, fixed_number_letters_param = {}'.format(iteration, fixed_number_letters_param))
+        letter_borad = generate_letter_board(board_param, board_floating_number_letters, fixed_number_letters_param)
+        return True, fixed_number_letters_param, letter_borad
 
     to_iterate = False
     number_list_to_iterate = list()
@@ -279,12 +280,14 @@ def solve_puzzle(iteration, board_param, fixed_number_letters_param, dictionary_
             break
 
     if not to_iterate:
-        return True, fixed_number_letters_param     # copy.deepcopy(fixed_number_letters_param)
+        letter_borad = generate_letter_board(board_param, board_floating_number_letters, fixed_number_letters_param)
+        return True, fixed_number_letters_param, letter_borad
 
     candidate_words = extract_candidate_words_from_dictionary(
         number_list_to_iterate, dictionary_param, fixed_number_letters_param)
 
     fixed_number_letters_param_copy = copy.deepcopy(fixed_number_letters_param)
+    letter_borad = generate_letter_board(board_param, board_floating_number_letters, fixed_number_letters_param)
     for word in candidate_words:
         fixed_number_letters_param_copy = copy.deepcopy(fixed_number_letters_param)
         for i, letter in enumerate(word):
@@ -292,16 +295,18 @@ def solve_puzzle(iteration, board_param, fixed_number_letters_param, dictionary_
                 continue
             fixed_number_letters_param_copy[number_list_to_iterate[i]] = letter.upper()
 
-        print('solver, iteration {}: fixed_number_letters_param = {}'.format(iteration, fixed_number_letters_param_copy))
+        print('solver, iteration {}: fixed_number_letters_param_copy = {}'.format(iteration, fixed_number_letters_param_copy))
 
         if iteration > 50: # debuging, stop going into infinite loop
-            return True, fixed_number_letters_param_copy
+            return True, fixed_number_letters_param_copy, letter_borad
         iteration += 1
-        solved, new_fixed_number_letters_paramc_copy = solve_puzzle(iteration, board_param, fixed_number_letters_param_copy, dictionary_param)
+        solved, fixed_number_letters_paramc_copy, letter_borad = solve_puzzle(iteration, board_param,
+                                                                              fixed_number_letters_param_copy,
+                                                                              dictionary_param)
         if solved:
-            return solved, fixed_number_letters_param_copy
+            return solved, fixed_number_letters_param_copy, letter_borad
 
-    return False, fixed_number_letters_param_copy
+    return False, fixed_number_letters_param_copy, letter_borad
 
 
 
