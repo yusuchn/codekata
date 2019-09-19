@@ -1,0 +1,290 @@
+---
+swagger: "2.0"
+info:
+  description: "The API for Battleships"
+  version: "1.0.0"
+  title: "Battleships API"
+  contact:
+    name: "nwalker@illumina.com"
+
+host: "10.44.37.98:9000"
+# host: "localhost:9000"
+schemes:
+- "http"
+
+paths:
+  /games/:
+    post:
+      summary: Start a new game
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Definition of game to start
+          required: true
+          schema:
+            $ref: "#/definitions/StartGame"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/StartGameResponse"
+    get:
+      summary: Get an index of all known games
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/GetGamesIndexResponse"
+
+
+  /games/{gameId}/:
+    get:
+      summary: Get the current status of a game
+      parameters:
+        - name: gameId
+          type: string
+          in: path
+          required: true
+          description: The ID of the game to return
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/GetGame"
+        404:
+          description: A game with the specified id was not found
+
+    delete:
+      summary: Delete the given game
+      parameters:
+        - name: gameId
+          type: string
+          in: path
+          required: true
+          description: The ID of the game to return
+      responses:
+        204:
+          description: Game deleted successfully
+        404:
+          description: Unknown game id
+
+
+  /games/{gameId}/{gridRef}/:
+    put:
+      summary: Make a move
+      parameters:
+        - name: gameId
+          in: path
+          type: string
+          required: true
+          description: The ID of the game
+        - name: gridRef
+          in: path
+          type: string
+          required: true
+          description: The location at which to make a move
+        - name: body
+          in: body
+          schema:
+            $ref: "#/definitions/Move"
+          description: Information about the move
+      responses:
+        200:
+          description: Move made
+          schema:
+            $ref: "#/definitions/MoveResponse"
+        400:
+          description: Bad request
+        403:
+          description: Not the turn of the specified player (or unknown player)
+        404:
+          description: unknown game id or bad grid reference
+        409:
+          description: attempt to make a move in a game that's over
+
+  /players/:
+    get:
+      summary: Get the list of all known players
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/GetPlayersIndexResponse"
+
+  /players/{name}/:
+    get:
+      summary: Get information about a specific player
+      parameters:
+        - name: name
+          type: string
+          in: path
+          required: true
+          description: The name of the player to retrieve
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/GetPlayer"
+        404:
+          description: Unknown player name
+
+definitions:
+  GetGamesIndexResponse:
+    type: object
+    # TODO: The generated python swagger client doesn't correctly model these
+    # with GetGame objects - instead, they're returned as dicts
+    additionalProperties:
+      $ref: "#/definitions/GetGame"
+
+  StartGameResponse:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: ID of the newly started game
+
+  StartGame:
+    type: object
+    required:
+      - player1
+      - player2
+    properties:
+      player1:
+        type: string
+        description: Name of player 1
+      player2:
+        type: string
+        description: Name of player 2
+
+
+  GetGame:
+    type: object
+    required:
+      - player1
+      - player2
+      - move
+      - winner
+      - fleet
+    properties:
+      player1:
+        $ref: '#/definitions/Player'
+      player2:
+        $ref: '#/definitions/Player'
+      move:
+        type: string
+        description: Name of player whose turn it is to make a move, or an empty string if the game is over
+      winner:
+        type: string
+        description: Name of player who has won, or an empty string if no winner yet
+        # openapi 3 would allow me to set nullable: true
+        # but I'm currently set to openapi 2 (aka swagger)
+        # I haven't yet investigated whether there would be incompatibility issues
+        # switching to v3
+      fleet:
+        type: array
+        description: The ships that are allocated to each player in the game
+        items:
+          $ref: "#/definitions/Ship"
+        minItems: 1
+
+  Ship:
+    type: object
+    required:
+      - name
+      - size
+    properties:
+      name:
+        type: string
+        description: Name of the ship
+      size:
+        type: integer
+        description: The length of the ship, in grid cells
+
+
+  Move:
+    type: object
+    required:
+      - player
+    properties:
+      player:
+        type: string
+        description: Name of player attempting to make the move
+
+
+  MoveResponse:
+    type: object
+    required:
+      - result
+      - knowledge
+    properties:
+      result:
+        type: string
+        description: Hit or Miss
+      knowledge:
+        $ref: "#/definitions/Knowledge"
+
+
+  Player:
+    type: object
+    required:
+      - name
+      - knowledge
+    properties:
+      name:
+        type: string
+        description: Name of the player
+      knowledge:
+        $ref: "#/definitions/Knowledge"
+
+  Knowledge:
+    type: array
+    description: The knowledge that the player has about the opponent board in the current game
+    items:
+      type: string
+      minLength: 10
+      maxLength: 10
+    minItems: 10
+    maxItems: 10
+
+  GetPlayersIndexResponse:
+    type: array
+    items:
+      $ref: "#/definitions/GetPlayer"
+
+  GetPlayer:
+    type: object
+    required:
+      - name
+      - won
+      - lost
+      - games
+    properties:
+      name:
+        type: string
+        description: Name of player
+      won:
+        type: integer
+        description: The count of games this player has won
+      lost:
+        type: integer
+        description: The count of games this player has lost
+      games:
+        type: array
+        description: List of active game ids that this player is involved in
+        items:
+          type: string
+

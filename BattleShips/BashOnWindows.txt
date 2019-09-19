@@ -1,0 +1,1 @@
+Git Bash can also be used to run bash command on windows, for example, the Gti Bash MINGW64

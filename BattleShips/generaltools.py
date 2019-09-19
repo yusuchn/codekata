@@ -998,50 +998,43 @@ from skimage.draw import random_shapes
 # from skimage import measure
 # from scipy.ndimage import gaussian_filter
 
-global_total_rows_in_plot = 1
-
-
 # thw function below is crated primarily for Battleship project
 # to display two client players in the same plot
 # also usefult for generic purpose
-def display_all_images_in_plot(title_img_pairs_param, fig_param, plot_canvas_param):
-    global global_total_rows_in_plot
+def display_all_images_in_plot(total_rows_in_plot_param, title_img_pairs_param, fig_param,
+                               plot_canvas_param, rearrange_sbuplot=False):
     number_images = len(title_img_pairs_param)
-    total_rows = global_total_rows_in_plot
+    total_rows = total_rows_in_plot_param
     total_cols = int(number_images/total_rows) + (number_images%total_rows)
-    print('title_img_pairs_param={}\nnumber_images={}\ntotal_rows={}\ntotal_cols={}'.format(
-        title_img_pairs_param, number_images, total_rows, total_cols))
+    # print('title_img_pairs_param={}\nnumber_images={}\ntotal_rows={}\ntotal_cols={}'.format(
+    #     title_img_pairs_param, number_images, total_rows, total_cols))
 
-    # remove exiting axes and add new ones based on number of iamges in title_img_pairs_param,
+    # if rearrange_sbuplot=True, exiting axes can be removed and new ones added
     # this allows us to have different number of axes in the plot in real time
     ax_list = list(fig_param.axes)
-    for ax in ax_list:
-        fig_param.delaxes(ax)
+    if (rearrange_sbuplot):
+        for ax in ax_list:
+            fig_param.delaxes(ax)
 
-        # the code below cearl out the cavas but doesn't re-draw
-        plot_canvas_param.flush_events()
-        plot_canvas_param.draw()
-        plot_canvas_param.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
-
-    # fig, axs = plt.subplots(1, 3)
-    # axs[0].plot([1, 2], [3, 4])
-    # axs[2].plot([0, 1], [2, 3])
-    # fig.delaxes(axs[1])
-    # plt.draw()
-
-    # fig, axes = plt.subplots(nrows=total_rows, ncols=total_cols)
-    # ax = axes.ravel()
+            # the code below cearl out the cavas but doesn't re-draw
+            plot_canvas_param.flush_events()
+            plot_canvas_param.draw()
+            plot_canvas_param.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
 
     # DO NOT USE plotCanvas.get_tk_widget().delete('all'),
     # it delete everyting but doesn't re-draw.
     # Instead, use plotCanvas.flush_events() below
 
     for i, (k, v) in enumerate(title_img_pairs_param.items()):
-        time.sleep(1)  # introduce a bit of deplay so we can see the animated effect
-        print('adding axes: total_rows={}, total_cols={}, i={}'.format(total_rows, total_cols, i))
+        # time.sleep(0.1)  # introduce a bit of deplay so we can see the animated effect
+        # print('refereshing axes: total_rows={}, total_cols={}, i={}'.format(total_rows, total_cols, i))
         # note, subplot index is one-based, hence i+1
-        ax = fig_param.add_subplot(total_rows, total_cols, i+1)
-        # ax.clear()
+        ax = None
+        if(len(ax_list) == 0):
+            ax = fig_param.add_subplot(total_rows, total_cols, i+1)
+        else:
+            ax = ax_list[i]
+            ax.clear()
         # v is the image
         ax.imshow(v)
         # k is the label for the image
@@ -1050,7 +1043,6 @@ def display_all_images_in_plot(title_img_pairs_param, fig_param, plot_canvas_par
         ax.set_yticklabels([])
         ax.axis('off')  # removes the axis to leave only the shape
 
-        # the code below cearl out the cavas but doesn't re-draw
         plot_canvas_param.flush_events()
         plot_canvas_param.draw()
         plot_canvas_param.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
@@ -1060,17 +1052,18 @@ def display_all_images_in_plot(title_img_pairs_param, fig_param, plot_canvas_par
 # a list of title_img_pairs, all of images in each title_img_pairs are
 # displayed in the plot at any one time.
 # the purpose of making a list here is for testing real time rendering
-def test_realtime_display_group_of_images(title_img_pairs_list_param, fig_param, plot_canvas_param):
+def test_realtime_display_group_of_images(total_rows_in_plot_param,
+                                          title_img_pairs_list_param, fig_param, plot_canvas_param):
     while(True):
         for v in title_img_pairs_list_param:
-            time.sleep(5)
-            display_all_images_in_plot(v, fig_param, plot_canvas_param)
+            time.sleep(1)
+            display_all_images_in_plot(total_rows_in_plot_param, v, fig_param, plot_canvas_param)
 
 
 def generate_test_title_img_pairs_list():
     test_title_img_pairs_list = list()
-    title_img_pairs = dict()
 
+    title_img_pairs = dict()
     loaded_im, rgb_list, img, pix = load_from_image('Defense.png')
     title_img_pairs['Defense.png'] = img
     loaded_im, rgb_list, img, pix = load_from_image('uncleaned_map.png')
@@ -1110,52 +1103,178 @@ def get_rgb_list(im_param):
     return rgb_list, pix  # return pix for updating pixel values
 
 
-root = tkinter.Tk()
-# root.withdraw()     # hide the little root window
-root.wm_title("Embedding in Tk")
+def draw_game_board_on_image(number_of_cells, w, font_szie, grid_texts, grid_colours, draw_debug=False):
+    # print('function: {}'.format(sys._getframe().f_code.co_name))
+    from PIL import Image, ImageDraw, ImageFont, ImageColor
 
-fig = Figure(figsize=(6, 3), dpi=100)  # set figure size
+    total_row = number_of_cells
+    total_col = number_of_cells
+    # grid = [[1] * total_col for n in range(total_row)]
+    devision = font_szie / 2
+    text_shift = int(w / devision)  # canvas.creat_text centres the text at the coordinate
 
-plotCanvas = FigureCanvasTkAgg(fig, master=root)  # a tk.DrawingArea.
-plotCanvas.draw()
-plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    # PIL create an empty image and draw object to draw on
+    # memory only, not visible
+    image1 = Image.new("RGB", (w*number_of_cells, w*number_of_cells), "white")
+    draw = ImageDraw.Draw(image1)
 
-color = "grey"  # "#ffffff"
-toolbar = NavigationToolbar2Tk(plotCanvas, root)
-toolbar.config(background=color)
-toolbar._message_label.config(background=color)
-toolbar.update()  # toolbar.pack(side=BOTTOM)
-plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    # clear the drawing area
+    draw.rectangle((0,0,w*number_of_cells,w*number_of_cells), fill="white", outline="black")
+
+    # set the origin
+    x, y = 0, 0
+
+    # font = ImageFont.truetype("arial.ttf", font_szie)
+    font = ImageFont.truetype("ITCKRIST.TTF", font_szie)
+    # font = ImageFont.truetype("MISTRAL.TTF", font_szie)
+    fill_black = ImageColor.getrgb('black')
+    fill_white = ImageColor.getrgb('white')
+    fill_orange = ImageColor.getrgb('orange')
+    for i in range(total_row):
+        for j in range(total_col):
+            row_index = int(y / w)
+            col_index = int(x / w)
+            cell_colour = grid_colours[row_index][col_index]
+            cell_text = grid_texts[row_index][col_index]
+            if draw_debug:
+                print('row_index={}, col_indxe={}, cell_colour={}, cell_image={}'.format(
+                    row_index, col_index, cell_colour, cell_text
+                ))
+            # minuts one is t avoid the last rectange has to outline
+            right = x+w
+            if j == total_col-1:
+                right = x+w-1
+            bottom = y+w
+            if i == total_row-1:
+                bottom = y+w-1
+            draw.rectangle((x, y, right, bottom), fill=cell_colour, outline='black')
+            text_x = x + text_shift
+            text_y = y + text_shift
+            if cell_text == 'Hit':
+                draw.text((text_x, text_y), text="X", fill=fill_orange, font=font)  # (0, 0, 0, 0)
+            elif cell_text == '?':
+                draw.text((text_x, text_y), text="?", fill=fill_black, font=font)
+            elif cell_text == 'Miss':
+                draw.text((text_x, text_y), text="*", fill=fill_black, font=font)
+            # NOTE, the following is for game board edges,
+            # keep the image name to determine the piece, but simply use text
+            elif cell_text == '1':
+                draw.text((text_x, text_y), text="1", fill=fill_white, font=font)  # (255, 255, 255, 255)
+            elif cell_text == '2':
+                draw.text((text_x, text_y), text="2", fill=fill_white, font=font) 
+            elif cell_text == '3':
+                draw.text((text_x, text_y), text="3", fill=fill_white, font=font)
+            elif cell_text == '4':
+                draw.text((text_x, text_y), text="4", fill=fill_white, font=font)
+            elif cell_text == '5':
+                draw.text((text_x, text_y), text="5", fill=fill_white, font=font)
+            elif cell_text == '6':
+                draw.text((text_x, text_y), text="6", fill=fill_white, font=font)
+            elif cell_text == '7':
+                draw.text((text_x, text_y), text="7", fill=fill_white, font=font)
+            elif cell_text == '8':
+                draw.text((text_x, text_y), text="8", fill=fill_white, font=font)
+            elif cell_text == '9':
+                draw.text((text_x, text_y), text="9", fill=fill_white, font=font)
+            elif cell_text == '10':
+                draw.text((text_x, text_y), text="10", fill=fill_white, font=font)
+            elif cell_text == 'A':
+                draw.text((text_x, text_y), text="A", fill=fill_white, font=font)
+            elif cell_text == 'B':
+                draw.text((text_x, text_y), text="B", fill=fill_white, font=font)
+            elif cell_text == 'C':
+                draw.text((text_x, text_y), text="C", fill=fill_white, font=font)
+            elif cell_text == 'D':
+                draw.text((text_x, text_y), text="D", fill=fill_white, font=font)
+            elif cell_text == 'E':
+                draw.text((text_x, text_y), text="E", fill=fill_white, font=font)
+            elif cell_text == 'F':
+                draw.text((text_x, text_y), text="F", fill=fill_white, font=font)
+            elif cell_text == 'G':
+                draw.text((text_x, text_y), text="G", fill=fill_white, font=font)
+            elif cell_text == 'H':
+                draw.text((text_x, text_y), text="H", fill=fill_white, font=font)
+            elif cell_text == 'I':
+                draw.text((text_x, text_y), text="I", fill=fill_white, font=font)
+            elif cell_text == 'J':
+                draw.text((text_x, text_y), text="J", fill=fill_white, font=font)
+            x = x + w
+        y = y + w
+        x = 0
+    image1.save("test_image_draw.png")
+    return image1
 
 
-def on_key_press(event):
-    print("you pressed {}".format(event.key))
-    key_press_handler(event, plotCanvas, toolbar)
+# the input param, title_img_pairs_list_param, for the function below is
+# a list of title_img_pairs, all of images in each title_img_pairs are
+# displayed in the plot at any one time.
+# the purpose of making a list here is for testing real time rendering
+def test_realtime_display_graphics(number_of_cells,font_szie, w, total_rows_in_plot_param, fig_param, plot_canvas_param,
+                                   grid_texts_default_param, grid_colours_default_param, sleep_param):
+    import copy
+    grid_texts_1 = copy.deepcopy(grid_texts_default_param)
+    grid_colours_1 = copy.deepcopy(grid_colours_default_param)
+    grid_texts_2 = copy.deepcopy(grid_texts_default_param)
+    grid_colours_2 = copy.deepcopy(grid_colours_default_param)
+    i = 0
+    j = 0
+    grid_total_rows = len(grid_texts_default_param)
+    grid_total_cols = len(grid_texts_default_param[0])
+    while(True):
+        m = max(i, j)
+        i += 1
+        j = i + 2
+        m = max(i, j)
+        if (i < grid_total_rows and j < grid_total_cols):
+            grid_texts_1[i][j] = 'Hit'
+            grid_colours_1[i][j] = 'LightSkyBlue'
+            grid_texts_2[j][i] = 'Hit'
+            grid_colours_2[j][i] = 'LightSkyBlue'
+            image_1 = draw_game_board_on_image(number_of_cells, w, font_szie, grid_texts_1, grid_colours_1, draw_debug=False)
+            image_title_1 = "hit board"
+            image_2 = draw_game_board_on_image(number_of_cells, w, font_szie, grid_texts_2, grid_colours_2, draw_debug=False)
+            image_title_2 = "score board"
+            pairs = dict()
+            pairs[image_title_1] = image_1
+            pairs[image_title_2] = image_2
+            time.sleep(sleep_param)
+            display_all_images_in_plot(total_rows_in_plot_param, pairs, fig_param, plot_canvas_param)
+        else:
+            i = 0
+            j = 0
+            grid_texts_1 = copy.deepcopy(grid_texts_default_param)
+            grid_colours_1 = copy.deepcopy(grid_colours_default_param)
+            grid_texts_2 = copy.deepcopy(grid_texts_default_param)
+            grid_colours_2 = copy.deepcopy(grid_colours_default_param)
 
 
-plotCanvas.mpl_connect("key_press_event", on_key_press)
+def update_grid_text_and_color(grid_texts_default_param, grid_colours_default_param,
+                               player_knowledge_param):
+    import copy
+    grid_texts = copy.deepcopy(grid_texts_default_param)
+    grid_colours = copy.deepcopy(grid_colours_default_param)
+    # NOTE, player_knowledge is 10x10, and we do not update grid top-row and left-column
+    # set start=1 in enumerate
+    i = 0
+    j = 0
+    grid_total_rows = len(grid_texts_default_param)
+    grid_total_cols = len(grid_texts_default_param[0])
+    for i, word in enumerate(player_knowledge_param, start=1):
+         for j, char in enumerate(word, start=1):
+             if char == 'X':
+                grid_texts[i][j] = 'Hit'
+                grid_colours[i][j] = 'black'
+             elif char == '.':
+                grid_texts[i][j] = 'Miss'
+                grid_colours[i][j] = 'LightSkyBlue'
+             elif char == '?':
+                grid_texts[i][j] = '?'
+                grid_colours[i][j] = 'white'
+             else:
+                grid_texts[i][j] = 'none'
+                grid_colours[i][j] = 'white'
 
-
-def _quit():
-    root.quit()     # stops mainloop
-    root.destroy()  # this is necessary on Windows to prevent
-                    # Fatal Python Error: PyEval_RestoreThread: NULL tstate
-
-
-button = tkinter.Button(master=root, text="Quit", command=_quit)
-button.pack(side=tkinter.BOTTOM)
-
-def main():
-    test_title_img_pairs_list = generate_test_title_img_pairs_list()
-    print('test_title_img_pairs_list = \n{}'.format(test_title_img_pairs_list))
-
-    # display_map_images(staged_image_list, staged_cost_l
-    test_realtime_display_group_of_images(test_title_img_pairs_list, fig, plotCanvas)
-
-    root.mainloop()
-
-if __name__ == '__main__':
-    main()
+    return grid_texts, grid_colours
 
 
 #endregion
@@ -1237,6 +1356,15 @@ if __name__ == '__main__':
 
 # fig.canvas.draw()
 # plt.show()
+#endregion
+
+#region system manipulation
+def quit_programatically():
+    import sys
+    sys.exit("Error message")
+
+# NOTE, although not python, other good examples to start/stop programs can be found:
+# https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
 #endregion
 
 
