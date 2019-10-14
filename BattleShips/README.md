@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
  - [Player](docs/Player.md)
  - [Ship](docs/Ship.md)
  - [StartGame](docs/StartGame.md)
+ - [StartGameOptions](docs/StartGameOptions.md)
  - [StartGameResponse](docs/StartGameResponse.md)
 
 

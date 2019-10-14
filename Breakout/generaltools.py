@@ -1374,5 +1374,3 @@ def quit_programatically():
 # NOTE, although not python, other good examples to start/stop programs can be found:
 # https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
 #endregion
-
-

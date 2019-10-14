@@ -32,23 +32,28 @@ class StartGame(object):
     """
     swagger_types = {
         'player1': 'str',
-        'player2': 'str'
+        'player2': 'str',
+        'options': 'StartGameOptions'
     }
 
     attribute_map = {
         'player1': 'player1',
-        'player2': 'player2'
+        'player2': 'player2',
+        'options': 'options'
     }
 
-    def __init__(self, player1=None, player2=None):  # noqa: E501
+    def __init__(self, player1=None, player2=None, options=None):  # noqa: E501
         """StartGame - a model defined in Swagger"""  # noqa: E501
 
         self._player1 = None
         self._player2 = None
+        self._options = None
         self.discriminator = None
 
         self.player1 = player1
         self.player2 = player2
+        if options is not None:
+            self.options = options
 
     @property
     def player1(self):
@@ -99,6 +104,27 @@ class StartGame(object):
             raise ValueError("Invalid value for `player2`, must not be `None`")  # noqa: E501
 
         self._player2 = player2
+
+    @property
+    def options(self):
+        """Gets the options of this StartGame.  # noqa: E501
+
+
+        :return: The options of this StartGame.  # noqa: E501
+        :rtype: StartGameOptions
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this StartGame.
+
+
+        :param options: The options of this StartGame.  # noqa: E501
+        :type: StartGameOptions
+        """
+
+        self._options = options
 
     def to_dict(self):
         """Returns the model properties as a dict"""
