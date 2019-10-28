@@ -3,7 +3,7 @@ import json
 import base64
 import numpy as np
 import random
-
+import collections
 
 #region performance evaluation tools
 # def test_set(xs):
@@ -16,8 +16,6 @@ def check_dup_set(xs):
             return True
 
     return False
-
-import collections
 
 # def test_counter(xs):
 def check_dup_counter(xs):
@@ -48,14 +46,13 @@ def check_dup_sort(xs):
 
     return False
 
-##
-
-# import sys, timeit
-# print (sys.version + "\n")
-# xs = list(range(10000)) + [999]
-# fns = [p for name, p in globals().items() if name.startswith('check_dup')]
-# for fn in fns:
-#     print ('%50s %.5f' % (fn, timeit.timeit(lambda: fn(xs), number=100)))
+def test_performance_eveluation():
+    import sys, timeit
+    print (sys.version + "\n")
+    xs = list(range(10000)) + [999]
+    fns = [p for name, p in globals().items() if name.startswith('check_dup')]
+    for fn in fns:
+        print ('%50s %.5f' % (fn, timeit.timeit(lambda: fn(xs), number=100)))
 #endregion
 
 
@@ -140,7 +137,6 @@ Finally the Inorder traversal logic is implemented by creating an empty list and
 first followed by the root or parent node. At last the left node is added to complete the Inorder traversal. 
 Please note that this process is repeated for each sub-tree until all the nodes are traversed.'''
 class Node:
-
     def __init__(self, data):
 
         self.left = None
@@ -181,36 +177,37 @@ class Node:
             res = res + self.inorderTraversal(root.right)
         return res
 
-# root = Node(27)
-# root.insert(14)
-# root.insert(35)
-# root.insert(10)
-# root.insert(19)
-# root.insert(31)
-# root.insert(42)
-root = Node('annal')
-root.insert('annam')
-root.insert('annas')
-root.insert('annat')
-root.insert('annet')
-root.insert('annex')
-root.insert('annie')
-root.insert('anniv')
-root.insert('annoy')
-root.insert('annot')
-root.insert('annul')
-root.insert('annum')
-root.insert('annus')
-root.insert('ennew')
-root.insert('ennia')
-root.insert('ennoy')
-root.insert('ennui')
-root.insert('inned')
-root.insert('inner')
-root.insert('innet')
-root.insert('unnet')
-root.insert('unnew')
-print('In order traversal tree = {}'.format(root.inorderTraversal(root)))
+def test_in_order_traversal_tree():
+    # root = Node(27)
+    # root.insert(14)
+    # root.insert(35)
+    # root.insert(10)
+    # root.insert(19)
+    # root.insert(31)
+    # root.insert(42)
+    root = Node('annal')
+    root.insert('annam')
+    root.insert('annas')
+    root.insert('annat')
+    root.insert('annet')
+    root.insert('annex')
+    root.insert('annie')
+    root.insert('anniv')
+    root.insert('annoy')
+    root.insert('annot')
+    root.insert('annul')
+    root.insert('annum')
+    root.insert('annus')
+    root.insert('ennew')
+    root.insert('ennia')
+    root.insert('ennoy')
+    root.insert('ennui')
+    root.insert('inned')
+    root.insert('inner')
+    root.insert('innet')
+    root.insert('unnet')
+    root.insert('unnew')
+    print('In order traversal tree = {}'.format(root.inorderTraversal(root)))
 
 
 # Pre-order Traversal
@@ -221,7 +218,6 @@ Finally the Pre-order traversal logic is implemented by creating an empty list a
 first followed by the left node. At last the right node is added to complete the Pre-order traversal. 
 Please note that this process is repeated for each sub-tree until all the nodes are traversed.'''
 class Node:
-
     def __init__(self, data):
 
         self.left = None
@@ -262,36 +258,37 @@ class Node:
             res = res + self.PreorderTraversal(root.right)
         return res
 
-# root = Node(27)
-# root.insert(14)
-# root.insert(35)
-# root.insert(10)
-# root.insert(19)
-# root.insert(31)
-# root.insert(42)
-root = Node('annal')
-root.insert('annam')
-root.insert('annas')
-root.insert('annat')
-root.insert('annet')
-root.insert('annex')
-root.insert('annie')
-root.insert('anniv')
-root.insert('annoy')
-root.insert('annot')
-root.insert('annul')
-root.insert('annum')
-root.insert('annus')
-root.insert('ennew')
-root.insert('ennia')
-root.insert('ennoy')
-root.insert('ennui')
-root.insert('inned')
-root.insert('inner')
-root.insert('innet')
-root.insert('unnet')
-root.insert('unnew')
-print('Pre order traversal tree = {}'.format(root.PreorderTraversal(root)))
+def test_pre_order_traversal_tree():
+    # root = Node(27)
+    # root.insert(14)
+    # root.insert(35)
+    # root.insert(10)
+    # root.insert(19)
+    # root.insert(31)
+    # root.insert(42)
+    root = Node('annal')
+    root.insert('annam')
+    root.insert('annas')
+    root.insert('annat')
+    root.insert('annet')
+    root.insert('annex')
+    root.insert('annie')
+    root.insert('anniv')
+    root.insert('annoy')
+    root.insert('annot')
+    root.insert('annul')
+    root.insert('annum')
+    root.insert('annus')
+    root.insert('ennew')
+    root.insert('ennia')
+    root.insert('ennoy')
+    root.insert('ennui')
+    root.insert('inned')
+    root.insert('inner')
+    root.insert('innet')
+    root.insert('unnet')
+    root.insert('unnew')
+    print('Pre order traversal tree = {}'.format(root.PreorderTraversal(root)))
 
 
 # Post-order Traversal
@@ -303,7 +300,6 @@ Finally the Post-order traversal logic is implemented by creating an empty list 
 first followed by the right node. At last the root or parent node is added to complete the Post-order traversal. 
 Please note that this process is repeated for each sub-tree until all the nodes are traversed.'''
 class Node:
-
     def __init__(self, data):
 
         self.left = None
@@ -344,36 +340,37 @@ class Node:
             res.append(root.data)
         return res
 
-# root = Node(27)
-# root.insert(14)
-# root.insert(35)
-# root.insert(10)
-# root.insert(19)
-# root.insert(31)
-# root.insert(42)
-root = Node('annal')
-root.insert('annam')
-root.insert('annas')
-root.insert('annat')
-root.insert('annet')
-root.insert('annex')
-root.insert('annie')
-root.insert('anniv')
-root.insert('annoy')
-root.insert('annot')
-root.insert('annul')
-root.insert('annum')
-root.insert('annus')
-root.insert('ennew')
-root.insert('ennia')
-root.insert('ennoy')
-root.insert('ennui')
-root.insert('inned')
-root.insert('inner')
-root.insert('innet')
-root.insert('unnet')
-root.insert('unnew')
-print('Post order traversal tree = {}'.format(root.PostorderTraversal(root)))
+def test_post_order_traversal_tree():
+    # root = Node(27)
+    # root.insert(14)
+    # root.insert(35)
+    # root.insert(10)
+    # root.insert(19)
+    # root.insert(31)
+    # root.insert(42)
+    root = Node('annal')
+    root.insert('annam')
+    root.insert('annas')
+    root.insert('annat')
+    root.insert('annet')
+    root.insert('annex')
+    root.insert('annie')
+    root.insert('anniv')
+    root.insert('annoy')
+    root.insert('annot')
+    root.insert('annul')
+    root.insert('annum')
+    root.insert('annus')
+    root.insert('ennew')
+    root.insert('ennia')
+    root.insert('ennoy')
+    root.insert('ennui')
+    root.insert('inned')
+    root.insert('inner')
+    root.insert('innet')
+    root.insert('unnet')
+    root.insert('unnew')
+    print('Post order traversal tree = {}'.format(root.PostorderTraversal(root)))
 #endregion
 
 
@@ -391,7 +388,6 @@ probably because we are using python 3.x'''
 # In Python 3.x "class Person" is
 # equivalent to "class Person(object)"
 class Person:    #(object):
-
     # Constructor
     def __init__(self, name):
         self.name = name
@@ -407,18 +403,17 @@ class Person:    #(object):
 
 # Inherited or Sub class (Note Person in bracket)
 class Employee(Person):
-
     # Here we return true
     def isEmployee(self):
         return True
 
+# Test code
+def test_inheritance():
+    emp = Person("Geek1")  # An Object of Person
+    print(emp.getName(), emp.isEmployee())
 
-# Driver code
-emp = Person("Geek1")  # An Object of Person
-print(emp.getName(), emp.isEmployee())
-
-emp = Employee("Geek2")  # An Object of Employee
-print(emp.getName(), emp.isEmployee())
+    emp = Employee("Geek2")  # An Object of Employee
+    print(emp.getName(), emp.isEmployee())
 
 
 '''Subclassing (Calling constructor of parent class).'''
@@ -454,14 +449,15 @@ class Employee(Person):
         print(self.post)
 
 
-# creation of an object variable or an instance
-a = Person('Rahul-1', 886012)
-b = Employee('Rahul-2', 886012-1, 1000, 'HR')
+def test_subclassing_1():
+    # creation of an object variable or an instance
+    a = Person('Rahul-1', 886012)
+    b = Employee('Rahul-2', 886012-1, 1000, 'HR')
 
-# calling a function of the class Person using its instance
-a.display()
-b.display()
-b.display_more()
+    # calling a function of the class Person using its instance
+    a.display()
+    b.display()
+    b.display_more()
 
 
 '''If you forget to invoke the __init__() of the parent class then 
@@ -480,8 +476,9 @@ class B(A):
         self.roll = roll
 
 
-object = B(23)
-print(object.name)
+def test_subclassing_2():
+    object = B(23)
+    print(object.name)
 
 
 '''Different forms of Inheritance:
@@ -517,8 +514,9 @@ class Derived(Base1, Base2):
         print(self.str1, self.str2)
 
 
-ob = Derived()
-ob.printStrs()
+def test_derived_class():
+    ob = Derived()
+    ob.printStrs()
 
 
 '''3. Multilevel inheritance: When we have child and grand child relationship.'''
@@ -563,9 +561,11 @@ class GrandChild(Child):
     def getAddress(self):
         return self.address
 
-# Driver code
-g = GrandChild("Geek1", 23, "Noida")
-print(g.getName(), g.getAge(), g.getAddress())
+
+def test_inherited_class():
+    # Driver code
+    g = GrandChild("Geek1", 23, "Noida")
+    print(g.getName(), g.getAge(), g.getAddress())
 
 
 '''4. Hierarchical inheritance More than one derived classes are created from a single base.
@@ -591,12 +591,12 @@ class D(C):
         self.e = 84
         C.__init__(self)
 
-
-object1 = D()
-# the following will not error as c is public instance variable
-print(object1.c)
-# the folowing produces an error as d is private instance variable
-# print(object1.d)
+def test_hierarchical_inheritance():
+    object1 = D()
+    # the following will not error as c is public instance variable
+    print(object1.c)
+    # the folowing produces an error as d is private instance variable
+    # print(object1.d)
 #endregion
 
 
@@ -625,8 +625,10 @@ class Date:      #(object):     #again, (object) gives TypeError, probably to do
         day, month, year = map(int, date_as_string.split('-'))
         return day <= 31 and month <= 12 and year <= 3999
 
-date2 = Date.from_string('11-09-2012')
-is_date = Date.is_date_valid('11-09-2012')
+
+def test_classmethod_staticmethod():
+    date2 = Date.from_string('11-09-2012')
+    is_date = Date.is_date_valid('11-09-2012')
 #endregion
 
 
@@ -697,7 +699,7 @@ import pandas
 """
 Created on Fri Aug  2 16:48:33 2019
 
-@author: ysu1
+@author: author
 """
 # from scipy import optimize
 
@@ -724,95 +726,94 @@ def f(z, *params):
     return f1(z, *params) + f2(z, *params) + f3(z, *params)
 
 
-# optimize.anneal is deprecated - claim has been made basinhopping
-# works just like anneal
-# x0 = np.array([2., 2.])     # Initial guess.
-# np.random.seed(555)   # Seeded to allow replication.
-# res = optimize.anneal(f, x0, args=params, schedule='boltzmann',
-#                       full_output=True, maxiter=500, lower=-10,
-#                       upper=10, dwell=250, disp=True)
+def test_simulated_annealing():
+    # optimize.anneal is deprecated - claim has been made basinhopping
+    # works just like anneal
+    # x0 = np.array([2., 2.])     # Initial guess.
+    # np.random.seed(555)   # Seeded to allow replication.
+    # res = optimize.anneal(f, x0, args=params, schedule='boltzmann',
+    #                       full_output=True, maxiter=500, lower=-10,
+    #                       upper=10, dwell=250, disp=True)
 
-minimizer_kwargs = {"method":"L-BFGS-B", "args":params}
-# NOTE, np array give the same results as the list for x0
-x0 = np.array([2., 2.])     # Initial guess.
-np.random.seed(555)   # Seeded to allow replication.
-# x0=[2.,2.]
-ret_params = optimize.basinhopping(
-        f, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
-print("simulated annealing - global minimum from params: x = [%.4f, %.4f], f(x0, *params) = %.4f" %
-      (ret_params.x[0], ret_params.x[1], ret_params.fun))
+    minimizer_kwargs = {"method":"L-BFGS-B", "args":params}
+    # NOTE, np array give the same results as the list for x0
+    x0 = np.array([2., 2.])     # Initial guess.
+    np.random.seed(555)   # Seeded to allow replication.
+    # x0=[2.,2.]
+    ret_params = optimize.basinhopping(
+            f, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
+    print("simulated annealing - global minimum from params: x = [%.4f, %.4f], f(x0, *params) = %.4f" %
+          (ret_params.x[0], ret_params.x[1], ret_params.fun))
 
-func = lambda x: np.cos(14.5 * x - 0.3) + (x + 0.2) * x
-minimizer_kwargs = {"method": "BFGS"}
-x0=[1.]
-ret_func = optimize.basinhopping(
-        func, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
-print("simulated annealing - global minimum from func: x = %.4f, f(x0) = %.4f" %
-      (ret_func.x, ret_func.fun))
+    func = lambda x: np.cos(14.5 * x - 0.3) + (x + 0.2) * x
+    minimizer_kwargs = {"method": "BFGS"}
+    x0=[1.]
+    ret_func = optimize.basinhopping(
+            func, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
+    print("simulated annealing - global minimum from func: x = %.4f, f(x0) = %.4f" %
+          (ret_func.x, ret_func.fun))
 
-def func2d(x):
-    f = np.cos(14.5 * x[0] - 0.3) + (x[1] + 0.2) * x[1] + (x[0] + 0.2) * x[0]
-    df = np.zeros(2)
-    df[0] = -14.5 * np.sin(14.5 * x[0] - 0.3) + 2. * x[0] + 0.2
-    df[1] = 2. * x[1] + 0.2
-    return f, df
-minimizer_kwargs = {"method":"L-BFGS-B", "jac":True}
-x0 =[1.0, 1.0]
-ret_func2d = optimize.basinhopping(
-        func2d, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
-print("simulated annealing - global minimum from func2d: x = [%.4f, %.4f], f(x0) = %.4f" %
-      (ret_func2d.x[0], ret_func2d.x[1], ret_func2d.fun))
+    def func2d(x):
+        f = np.cos(14.5 * x[0] - 0.3) + (x[1] + 0.2) * x[1] + (x[0] + 0.2) * x[0]
+        df = np.zeros(2)
+        df[0] = -14.5 * np.sin(14.5 * x[0] - 0.3) + 2. * x[0] + 0.2
+        df[1] = 2. * x[1] + 0.2
+        return f, df
+    minimizer_kwargs = {"method":"L-BFGS-B", "jac":True}
+    x0 =[1.0, 1.0]
+    ret_func2d = optimize.basinhopping(
+            func2d, x0, minimizer_kwargs=minimizer_kwargs, niter=200)
+    print("simulated annealing - global minimum from func2d: x = [%.4f, %.4f], f(x0) = %.4f" %
+          (ret_func2d.x[0], ret_func2d.x[1], ret_func2d.fun))
 
 #endregion
 
 
 #region Web Framework
-# web framework stuff has been moved to codekat_neuron under users
+from flask import Flask, request
+from flask_restful import Resource, Api
+from sqlalchemy import create_engine
+from json import dumps
+# NOTE: "from flask.ext.jsonpify import jsonify" gives "ModuleNotFoundError: No module named 'flask.ext'" error,
+# use "from flask_jsonpify import jsonify" instead
+# from flask.ext.jsonpify import jsonify
+from flask_jsonpify import jsonify
 
-# from flask import Flask, request
-# from flask_restful import Resource, Api
-# from sqlalchemy import create_engine
-# from json import dumps
-# # NOTE: "from flask.ext.jsonpify import jsonify" gives "ModuleNotFoundError: No module named 'flask.ext'" error,
-# # use "from flask_jsonpify import jsonify" instead
-# # from flask.ext.jsonpify import jsonify
-# from flask_jsonpify import jsonify
-#
-# import sqlite3
-# db_connect = create_engine('sqlite:///chinook.db')
-# app = Flask(__name__)
-# api = Api(app)
-#
-#
-# class Employees(Resource):
-#     def get(self):
-#         conn = db_connect.connect()  # connect to database
-#         query = conn.execute("select * from employees")  # This line performs query and returns json result
-#         return {'employees': [i[0] for i in query.cursor.fetchall()]}  # Fetches first column that is Employee ID
-#
-#
-# class Tracks(Resource):
-#     def get(self):
-#         conn = db_connect.connect()
-#         query = conn.execute("select trackid, name, composer, unitprice from tracks;")
-#         result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
-#         return jsonify(result)
-#
-#
-# class Employees_Name(Resource):
-#     def get(self, employee_id):
-#         conn = db_connect.connect()
-#         query = conn.execute("select * from employees where EmployeeId =%d " % int(employee_id))
-#         result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
-#         return jsonify(result)
-#
-#
-# api.add_resource(Employees, '/employees')  # Route_1
-# api.add_resource(Tracks, '/tracks')  # Route_2
-# api.add_resource(Employees_Name, '/employees/<employee_id>')  # Route_3
-#
-# if __name__ == '__main__':
-#     app.run(port='5002')
+import sqlite3#
+
+class Employees(Resource):
+    def get(self):
+        conn = db_connect.connect()  # connect to database
+        query = conn.execute("select * from employees")  # This line performs query and returns json result
+        return {'employees': [i[0] for i in query.cursor.fetchall()]}  # Fetches first column that is Employee ID
+
+
+class Tracks(Resource):
+    def get(self):
+        conn = db_connect.connect()
+        query = conn.execute("select trackid, name, composer, unitprice from tracks;")
+        result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+        return jsonify(result)
+
+
+class Employees_Name(Resource):
+    def get(self, employee_id):
+        conn = db_connect.connect()
+        query = conn.execute("select * from employees where EmployeeId =%d " % int(employee_id))
+        result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
+        return jsonify(result)
+
+def test_web_app():
+    db_connect = create_engine('sqlite:///chinook.db')
+    app = Flask(__name__)
+    api = Api(app)
+
+    api.add_resource(Employees, '/employees')  # Route_1
+    api.add_resource(Tracks, '/tracks')  # Route_2
+    api.add_resource(Employees_Name, '/employees/<employee_id>')  # Route_3
+
+    if __name__ == '__main__':
+        app.run(port='5002')
 #endregion
 
 
@@ -820,9 +821,10 @@ print("simulated annealing - global minimum from func2d: x = [%.4f, %.4f], f(x0)
 # using the Python Image Library (PIL) to resize an image
 # works with Python27 and Python32
 from PIL import Image, ImageFont, ImageDraw
-import os
 
 def resize_image(image_filename_param, factor_ratio_param, resize_filter_str_param, other_new_filename_suffix=''):
+    import os
+
     # split image filename into name and extension
     name, ext = os.path.splitext(image_filename_param)
     img_org = Image.open(image_filename_param)
@@ -856,22 +858,23 @@ def resize_image(image_filename_param, factor_ratio_param, resize_filter_str_par
 
     return True, new_image_file
 
-# image_file = "Defense.png"
-# resized_antialias, new_image_file_antialias = resize_image(image_file, 0.75, 'antialias')
-# resized_bilinear, new_image_file_bilinear = resize_image(image_file, 10, 'bilinear')
-# resized_bicubic, new_image_file_bicubic = resize_image(image_file, 10, 'bicubic')
-# resized_nearest, new_image_file_nearest = resize_image(image_file, 10, 'nearest')
+def test_image_resizing():
+    image_file = "Defense.png"
+    resized_antialias, new_image_file_antialias = resize_image(image_file, 0.75, 'antialias')
+    resized_bilinear, new_image_file_bilinear = resize_image(image_file, 10, 'bilinear')
+    resized_bicubic, new_image_file_bicubic = resize_image(image_file, 10, 'bicubic')
+    resized_nearest, new_image_file_nearest = resize_image(image_file, 10, 'nearest')
 
-# # one way to show the image is to activate
-# # the default viewer associated with the image type
-# import webbrowser
-# webbrowser.open(new_image_file_nearest)
+    # one way to show the image is to activate
+    # the default viewer associated with the image type
+    import webbrowser
+    webbrowser.open(new_image_file_nearest)
 
-# # optional image viewer ...
-# # image viewer  i_view32.exe   free download from:  http://www.irfanview.com/
-# # avoids the many huge bitmap files generated by PIL's show()
-# import os
-# os.system("d:/python24/i_view32.exe %s" % "BILINEAR.png")
+    # # optional image viewer ...
+    # # image viewer  i_view32.exe   free download from:  http://www.irfanview.com/
+    # # avoids the many huge bitmap files generated by PIL's show()
+    # import os
+    # os.system("d:/python24/i_view32.exe %s" % "BILINEAR.png")
 #endregion
 
 
@@ -900,22 +903,20 @@ def impose_text_on_image(background_image_filename_param, indexes_texts_pair_dic
     # save the edited image
     image.save(new_image_filename_param)
 
+def test_impose_text_on_image():
+    background_image_filename = 'Defense10_nearest.png'
+    indexes_texts_pair_dict = dict()
+    font_filename = 'ITCKRIST.TTF'
+    font_size = 18
+    text_color = 'rgb(0, 0, 0)'  # black color
+    # text_color = 'rgb(255, 255, 255)'  # black color
 
-# background_image_filename = 'Defense10_nearest.png'
-# indexes_texts_pair_dict = dict()
-# font_filename = 'ITCKRIST.TTF'
-# font_size = 18
-# text_color = 'rgb(0, 0, 0)'  # black color
-# # text_color = 'rgb(255, 255, 255)'  # black color
-#
-# indexes_texts_pair_dict.clear()
-# indexes_texts_pair_dict[(50, 50)] = "map"
-# indexes_texts_pair_dict[(200, 300)] = 'vinyl'
-# new_image_filename = 'Defense_nearest_impose_text.png'
-# impose_text_on_image(background_image_filename, indexes_texts_pair_dict,
-#                      font_filename, font_size, text_color, new_image_filename)
-
-
+    indexes_texts_pair_dict.clear()
+    indexes_texts_pair_dict[(50, 50)] = "map"
+    indexes_texts_pair_dict[(200, 300)] = 'vinyl'
+    new_image_filename = 'Defense_nearest_impose_text.png'
+    impose_text_on_image(background_image_filename, indexes_texts_pair_dict,
+                         font_filename, font_size, text_color, new_image_filename)
 #endregion
 
 
@@ -982,8 +983,6 @@ matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 # from matplotlib.path import Path
 # import matplotlib.patches as patches
-
-from matplotlib.animation import FuncAnimation
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 # Implement the default Matplotlib key bindings.
@@ -1080,14 +1079,15 @@ def generate_test_title_img_pairs_list():
     return test_title_img_pairs_list
 
 
-def load_from_image(map_jpag_filename):
+def load_from_image(filename):
     try:
-        im = Image.open(map_jpag_filename)  # Can be many different formats, but, currently only working on jpg
+        im = Image.open(filename)  # Can be many different formats, can even be byte buffer
         print('image size = {}'.format(im.size))  # Get the width and hight of the image for iterating over
         rgb_list, pix = get_rgb_list(im)
         # return im and pix for updating pixel values and saving modified image,
         # note, pix is a PixeAccess Class, and it doesn't has size attribute, so,
         # returning im for: 1. access the image size, 2. save any modification to the image
+        # also, pix has flopped indexing, so when use simply swap row and col
         return True, rgb_list, im, pix
     except:
         print("No image map file exists")
@@ -1099,6 +1099,7 @@ def get_rgb_list(im_param):
     rgb_list = [[(0, 0, 0)] * im_param.size[1] for n in range(im_param.size[0])]
     for i in range(im_param.size[0]):
         for j in range(im_param.size[1]):
+            # note, rgb_list returned from this function is the same as pix, ie, flopped indexing
             rgb_list[i][j] = pix[i, j]
     return rgb_list, pix  # return pix for updating pixel values
 
@@ -1285,10 +1286,69 @@ def update_grid_text_and_color(grid_texts_default_param, grid_colours_default_pa
     return grid_texts, grid_colours
 
 
+# the following three functions may comes handy when doing image analysis
+# for example algorithm for moving the bat in Breakout project
+def bytes_to_int(bytes):
+    result = 0
+    for b in bytes:
+        result = result * 256 + int(b)
+    return result
+
+def int_to_bytes(value, length):
+    result = []
+    for i in range(0, length):
+        result.append(value >> (i * 8) & 0xff)
+    result.reverse()
+    return result
+
+def byte_array_to_int_array(bytearray):
+    i_result = []
+    for b in bytearray:
+        i = int.from_bytes(b, byteorder='big', signed=False)
+        i_result.append(i)
+    return i_result
+
+
+def matplot_display_setup(figure_width_param, figure_height_param):
+    root = tkinter.Tk()
+    root.wm_title("Embedding in Tk")
+
+    fig = Figure(figsize=(figure_width_param, figure_height_param), dpi=100)  # set figure size
+
+    plotCanvas = FigureCanvasTkAgg(fig, master=root)  # a tk.DrawingArea.
+    plotCanvas.draw()
+    plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+
+    color = "grey"  # "#ffffff"
+    toolbar = NavigationToolbar2Tk(plotCanvas, root)
+    toolbar.config(background=color)
+    toolbar._message_label.config(background=color)
+    toolbar.update()  # toolbar.pack(side=BOTTOM)
+    plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, plotCanvas, toolbar)
+
+    plotCanvas.mpl_connect("key_press_event", on_key_press)
+
+    def _quit():
+        root.quit()     # stops mainloop
+        root.destroy()  # this is necessary on Windows to prevent
+                        # Fatal Python Error: PyEval_RestoreThread: NULL tstate
+
+    button = tkinter.Button(master=root, text="Quit", command=_quit)
+    button.pack(side=tkinter.BOTTOM)
+
+    return root, fig, plotCanvas, toolbar, button
+
+
 #endregion
 
 
 #region Other Image animation examples
+# from matplotlib.animation import FuncAnimation
+#
 # #######################################################
 # fig, ax = plt.subplots()
 # xdata, ydata = [], []
@@ -1365,6 +1425,7 @@ def update_grid_text_and_color(grid_texts_default_param, grid_colours_default_pa
 # fig.canvas.draw()
 # plt.show()
 #endregion
+
 
 #region system manipulation
 def quit_programatically():

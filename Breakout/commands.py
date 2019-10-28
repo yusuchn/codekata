@@ -3,3 +3,4 @@ class Command:
     MoveLeft = 'L'
     MoveRight = 'R'
     StopMoving = '.'
+    ResetGame = 'N'

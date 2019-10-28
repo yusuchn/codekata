@@ -59,10 +59,12 @@ class BatController(socketserver.BaseRequestHandler):
         """
         # self.request is a pair of data and client socket
         self.server.command = self.request[0].decode('utf-8')  # assumes printable
+        logging.debug(f"Command {self.server.command} received from {self.client_address}")
 
 
 class ImageServer(socketserver.BaseRequestHandler):
     def handle(self):
+        logging.debug(f"Connection from {self.client_address}")
         surface = self.server.surface
         image = pygame.image.tostring(surface, 'RGB')
         image = Image.frombytes('RGB', surface.get_size(), image)
@@ -118,25 +120,33 @@ def erase_bat(surface: pygame.Surface, batpos: pygame.Rect):
 
 
 class GameController(object):
-    def __init__(self, surface, commandserver, bricks, speed):
+    def __init__(self, surface, commandserver, speed):
         self.surface = surface
         self.commandserver = commandserver
-        self.bricks = bricks
         self.speed = speed
-        self.game_state = GameState.WaitingToStart
-        self.ballpos = Position(int(SCREEN_W / 2 - BALL_R), int(bricks[-1].y + BRICK_H + BRICK_Y_PAD + BALL_R * 2))
-        self.ballspeed = Movement(0, 0)
+        self.reset()
 
+    def reset(self):
+        self.game_state = GameState.WaitingToStart
+        self.bricks = allocate_bricks()
+        self.ballpos = Position(int(SCREEN_W / 2 - BALL_R), int(self.bricks[-1].y + BRICK_H + BRICK_Y_PAD + BALL_R * 2))
+        self.ballspeed = Movement(0, 0)
         self.batpos = Position(SCREEN_W / 2 - BAT_W / 2, BAT_Y)
         self.batspeed = Movement(0, 0)
+        self.surface.fill(Colours.White)
+        draw_bricks(self.surface, self.bricks)
 
     def idle_loop(self, time_passed):
-        if self.game_state == GameState.GameOver:
-            return
-
         self.commandserver.handle_request()
         if self.commandserver.command:
             logging.debug(self.commandserver.command)
+
+        if self.commandserver.command == Command.ResetGame:
+            self.reset()
+        else:
+            if self.game_state == GameState.GameOver:
+                return
+
             if self.game_state == GameState.WaitingToStart:
                 # only one command is accepted: start game
                 if self.commandserver.command == Command.StartGame:
@@ -149,7 +159,7 @@ class GameController(object):
                     self.batspeed = Movement(BAT_SPEED, 0)
                 elif self.commandserver.command == Command.StopMoving:
                     self.batspeed = Movement(0, 0)
-            self.commandserver.command = None
+        self.commandserver.command = None
 
         self.move_bat(time_passed)
 
@@ -161,7 +171,7 @@ class GameController(object):
         elif not self.bricks:
             text_to_show = "YOU WIN!!"
         if text_to_show:
-            font = pygame.font.Font('/Library/Fonts/Impact.ttf', 48)
+            font = pygame.font.Font('AGENCYB.TTF', 48)
             text_surface = font.render(text_to_show, True, Colours.Black)
             text_w, text_h = text_surface.get_size()
             self.surface.blit(text_surface, ((SCREEN_W - text_w) / 2, (SCREEN_H - text_h) / 2))
@@ -232,17 +242,12 @@ def parse_args():
 
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
     args = parse_args()
     screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
     pygame.font.init()
 
-    bricks = allocate_bricks()
-
     surface = pygame.Surface((SCREEN_W, SCREEN_H))
-    surface.fill(Colours.White)
-    draw_bricks(surface, bricks)
-    # draw_ball(surface, ballpos)
-    # draw_bat(surface, batpos)
 
     screen.blit(surface, (0, 0))
     pygame.display.flip()
@@ -255,7 +260,7 @@ def main():
             socketserver.ThreadingTCPServer((args.host, args.port), ImageServer) as imageserver:
         commandserver.timeout = imageserver.timeout = 0
         commandserver.command = None
-        game_controller = GameController(surface, commandserver, bricks, args.speed)
+        game_controller = GameController(surface, commandserver, args.speed)
         imageserver.surface = surface
         imageserver.format = args.format
         while not quit:
