@@ -25,4 +25,5 @@ from swagger_client.models.move_response import MoveResponse
 from swagger_client.models.player import Player
 from swagger_client.models.ship import Ship
 from swagger_client.models.start_game import StartGame
+from swagger_client.models.start_game_options import StartGameOptions
 from swagger_client.models.start_game_response import StartGameResponse

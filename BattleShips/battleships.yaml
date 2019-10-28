@@ -169,7 +169,26 @@ definitions:
       player2:
         type: string
         description: Name of player 2
+      options:
+        $ref: '#/definitions/StartGameOptions'
 
+  StartGameOptions:
+    type: object
+    properties:
+      allow_adjacent_ships:
+        type: bool
+        description: Whether to allow ships to be placed next to another ship when laying out the board
+      board_size:
+        type: object
+        description: Custom board size
+        required:
+          - width
+          - height
+        properties:
+          width:
+            type: int
+          height:
+            type: int
 
   GetGame:
     type: object
