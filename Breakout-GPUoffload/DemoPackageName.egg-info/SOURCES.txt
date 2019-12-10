@@ -1,0 +1,7 @@
+demo.c
+setup_demo.py
+DemoPackageName.egg-info/PKG-INFO
+DemoPackageName.egg-info/SOURCES.txt
+DemoPackageName.egg-info/dependency_links.txt
+DemoPackageName.egg-info/top_level.txt
+DemoPackageName.egg-info/version.txt

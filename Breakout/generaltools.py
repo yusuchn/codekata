@@ -1095,12 +1095,15 @@ def load_from_image(filename):
 
 
 def get_rgb_list(im_param):
+    image_w = im_param.size[0]
+    image_h = im_param.size[1]
     pix = im_param.load()  # load pixel RGB value of the image
-    rgb_list = [[(0, 0, 0)] * im_param.size[1] for n in range(im_param.size[0])]
-    for i in range(im_param.size[0]):
-        for j in range(im_param.size[1]):
+    # note, create the rgb_list the same orientation as the pix object
+    rgb_list = [[(0, 0, 0)] * image_h for n in range(image_w)]
+    for i in range(image_w):
+        for j in range(image_h):
             # note, rgb_list returned from this function is the same as pix, ie, flopped indexing
-            rgb_list[i][j] = pix[i, j]
+            rgb_list[i][j] = pix[i,j]
     return rgb_list, pix  # return pix for updating pixel values
 
 
@@ -1435,3 +1438,25 @@ def quit_programatically():
 # NOTE, although not python, other good examples to start/stop programs can be found:
 # https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
 #endregion
+
+
+#region reading binary files
+from binreader import BinaryReader
+
+def read_refrence_genome(reference_genome_filename):
+    bin_io = open(reference_genome_filename, 'rb', )
+    bin_reader = BinaryReader(bin_io)
+    header_tag = bin_reader.read_string()
+    # aiming to precisely locate the postion of the reference version nubmer byte to read
+    # get the size of the 'NirvanaReference' string in bytes
+    pos = len(header_tag.encode('utf-8'))
+    bin_reader.seek(pos-1)
+    header_version = bin_reader.read_int32()
+    print('reference_genome_filename={}, header_tag={}, header_version={}'.format(
+        reference_genome_filename, header_tag, header_version))
+
+read_refrence_genome('Reference_NonDefinitive.dat')
+read_refrence_genome('Homo_sapiens.GRCh37.Nirvana_V3.dat')
+read_refrence_genome('Reference_V5.dat')
+#endregion
+

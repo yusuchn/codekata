@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import sys
 import json
 import base64
@@ -568,14 +571,14 @@ def test_inherited_class():
     print(g.getName(), g.getAge(), g.getAddress())
 
 
-'''4. Hierarchical inheritance More than one derived classes are created from a single base.
-4. Hybrid inheritance: This form combines more than one form of inheritance. 
-Basically, it is a blend of more than one type of inheritance.
-Private members of parent class
-We don’t always want the instance variables of the parent class to be inherited by the child class 
-i.e. we can make some of the instance variables of the parent class private, which won’t be available 
-to the child class.
-We can make an instance variable by adding double underscores before its name. For example,'''
+# '''4. Hierarchical inheritance More than one derived classes are created from a single base.
+# 4. Hybrid inheritance: This form combines more than one form of inheritance.
+# Basically, it is a blend of more than one type of inheritance.
+# Private members of parent class
+# We don’t always want the instance variables of the parent class to be inherited by the child class
+# i.e. we can make some of the instance variables of the parent class private, which won’t be available
+# to the child class.
+# We can make an instance variable by adding double underscores before its name. For example,'''
 # Python program to demonstrate private members
 # of the parent class
 class C:        #(object):
@@ -922,7 +925,7 @@ def test_impose_text_on_image():
 
 #region Embedding in Tk pseudo code, keeping under def as generaltools are being included wholely into projects
 def embedding_in_tk_pseudo():
-    import tkinter
+    import Tkinter
 
     from matplotlib.backends.backend_tkagg import (
         FigureCanvasTkAgg, NavigationToolbar2Tk)
@@ -933,7 +936,7 @@ def embedding_in_tk_pseudo():
     import numpy as np
 
 
-    root = tkinter.Tk()
+    root = Tkinter.Tk()
     root.wm_title("Embedding in Tk")
 
     fig = Figure(figsize=(5, 4), dpi=100)
@@ -942,11 +945,11 @@ def embedding_in_tk_pseudo():
 
     canvas = FigureCanvasTkAgg(fig, master=root)  # A tk.DrawingArea.
     canvas.draw()
-    canvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    canvas.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
     toolbar = NavigationToolbar2Tk(canvas, root)
     toolbar.update()
-    canvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    canvas.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
 
     def on_key_press(event):
@@ -963,17 +966,17 @@ def embedding_in_tk_pseudo():
                         # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
 
-    button = tkinter.Button(master=root, text="Quit", command=_quit)
-    button.pack(side=tkinter.BOTTOM)
+    button = Tkinter.Button(master=root, text="Quit", command=_quit)
+    button.pack(side=Tkinter.BOTTOM)
 
-    tkinter.mainloop()
+    Tkinter.mainloop()
     # If you put root.destroy() here, it will cause an error if the window is
     # closed with the window manager.
 #endregion
 
 
 #region Image Display In Real Time
-import tkinter
+import Tkinter
 
 import matplotlib
 # set matplotlib to use 'TKAgg' would make the plot to be in a seperate figure outside the PyCharm IDE
@@ -1018,7 +1021,7 @@ def display_all_images_in_plot(total_rows_in_plot_param, title_img_pairs_param, 
             # the code below cearl out the cavas but doesn't re-draw
             plot_canvas_param.flush_events()
             plot_canvas_param.draw()
-            plot_canvas_param.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+            plot_canvas_param.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
     # DO NOT USE plotCanvas.get_tk_widget().delete('all'),
     # it delete everyting but doesn't re-draw.
@@ -1044,7 +1047,7 @@ def display_all_images_in_plot(total_rows_in_plot_param, title_img_pairs_param, 
 
         plot_canvas_param.flush_events()
         plot_canvas_param.draw()
-        plot_canvas_param.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+        plot_canvas_param.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
 
 # the input param, title_img_pairs_list_param, for the function below is
@@ -1102,6 +1105,26 @@ def get_rgb_list(im_param):
             # note, rgb_list returned from this function is the same as pix, ie, flopped indexing
             rgb_list[i][j] = pix[i, j]
     return rgb_list, pix  # return pix for updating pixel values
+
+
+def load_from_text(txt_filename):
+    try:
+        lines = open(txt_filename)
+        letter_list = get_letter_list(lines)
+        return True, letter_list
+    except:
+        print("No text map file exists")
+        return False, None
+
+
+def get_letter_list(lines_param):
+    letter_list = list()
+    for i, line in enumerate(lines_param):
+        line_letter_list = list()
+        for j, letter in enumerate(line.strip()):
+            line_letter_list.append(letter)
+        letter_list.append(line_letter_list)
+    return letter_list
 
 
 def draw_game_board_on_image(number_of_cells, w, font_szie, grid_texts, grid_colours,
@@ -1310,21 +1333,21 @@ def byte_array_to_int_array(bytearray):
 
 
 def matplot_display_setup(figure_width_param, figure_height_param):
-    root = tkinter.Tk()
+    root = Tkinter.Tk()
     root.wm_title("Embedding in Tk")
 
     fig = Figure(figsize=(figure_width_param, figure_height_param), dpi=100)  # set figure size
 
     plotCanvas = FigureCanvasTkAgg(fig, master=root)  # a tk.DrawingArea.
     plotCanvas.draw()
-    plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    plotCanvas.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
     color = "grey"  # "#ffffff"
     toolbar = NavigationToolbar2Tk(plotCanvas, root)
     toolbar.config(background=color)
     toolbar._message_label.config(background=color)
     toolbar.update()  # toolbar.pack(side=BOTTOM)
-    plotCanvas.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    plotCanvas.get_tk_widget().pack(side=Tkinter.TOP, fill=Tkinter.BOTH, expand=1)
 
     def on_key_press(event):
         print("you pressed {}".format(event.key))
@@ -1337,8 +1360,8 @@ def matplot_display_setup(figure_width_param, figure_height_param):
         root.destroy()  # this is necessary on Windows to prevent
                         # Fatal Python Error: PyEval_RestoreThread: NULL tstate
 
-    button = tkinter.Button(master=root, text="Quit", command=_quit)
-    button.pack(side=tkinter.BOTTOM)
+    button = Tkinter.Button(master=root, text="Quit", command=_quit)
+    button.pack(side=Tkinter.BOTTOM)
 
     return root, fig, plotCanvas, toolbar, button
 
@@ -1434,4 +1457,17 @@ def quit_programatically():
 
 # NOTE, although not python, other good examples to start/stop programs can be found:
 # https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1044654269&id=1043284392
+#endregion
+
+#region reading binary files
+from binreader import BinaryReader
+
+def read_refrence_genome(reference_genome_filename):
+    bin_io = open(reference_genome_filename, 'r', )
+    bin_reader = BinaryReader(bin_io)
+    header_tag = bin_reader.read_cstring()
+    header_version = bin_reader.read_int32()
+    print('header_tag={}, header_version={}'.format(header_tag, header_version))
+
+read_refrence_genome('Reference.dat')
 #endregion

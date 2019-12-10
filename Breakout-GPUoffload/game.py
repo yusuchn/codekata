@@ -3,7 +3,7 @@ from collections import namedtuple
 import io
 import logging
 import random
-import socketserver
+import SocketServer
 
 from PIL import Image
 import pygame
@@ -29,7 +29,7 @@ BALL_SPEED = 1
 BAT_SPEED = 1.5
 
 # Types
-Brick = pygame.Rect
+Brick = pygame.Rect # pygame.Rect
 Position = namedtuple('Position', ['x', 'y'])
 Movement = namedtuple('Movement', ['dx', 'dy'])
 
@@ -48,7 +48,7 @@ class GameState:
     GameOver = 2
 
 
-class BatController(socketserver.BaseRequestHandler):
+class BatController(SocketServer.BaseRequestHandler):
     def handle(self):
         """
         This handler is invoked when a UDP packet is received.
@@ -59,12 +59,15 @@ class BatController(socketserver.BaseRequestHandler):
         """
         # self.request is a pair of data and client socket
         self.server.command = self.request[0].decode('utf-8')  # assumes printable
-        logging.debug(f"Command {self.server.command} received from {self.client_address}")
+        server_command_str = str(self.server.command)
+        client_address_str = str(self.client_address)
+        logging.debug('Command {{}} received from {}'.format(server_command_str, client_address_str))
 
 
-class ImageServer(socketserver.BaseRequestHandler):
+class ImageServer(SocketServer.BaseRequestHandler):
     def handle(self):
-        logging.debug(f"Connection from {self.client_address}")
+        # logging.debug(f"Connection from {self.client_address}")
+        logging.debug("Connection from {}".format(self.client_address))
         surface = self.server.surface
         image = pygame.image.tostring(surface, 'RGB')
         image = Image.frombytes('RGB', surface.get_size(), image)
@@ -78,7 +81,7 @@ def allocate_bricks():
     bricks = []
     gy = 100
     for y in range(5):
-        gx = BRICK_X_PAD / 2
+        gx = int(BRICK_X_PAD / 2)
         while gx < SCREEN_W:
             bricks.append(Brick(gx, gy, BRICK_W, BRICK_H))
             gx += BRICK_W + BRICK_X_PAD
@@ -86,36 +89,43 @@ def allocate_bricks():
     return bricks
 
 
-def draw_bricks(surface: pygame.Surface, bricks: list):
+# def draw_bricks(surface: pygame.Surface, bricks: list):
+def draw_bricks(surface, bricks):
     for brick in bricks:
         draw_brick(surface, brick)
 
 
-def draw_brick(surface: pygame.Surface, brick: pygame.Rect):
+# def draw_brick(surface: pygame.Surface, brick: pygame.Rect):
+def draw_brick(surface, brick):
     surface.fill(Colours.Red, brick)
     pygame.draw.rect(surface, Colours.Black, brick, 2)
 
 
-def erase_brick(surface: pygame.Surface, brick: pygame.Rect):
+# def erase_brick(surface: pygame.Surface, brick: pygame.Rect):
+def erase_brick(surface, brick):
     pygame.draw.rect(surface, Colours.White, (brick[0], brick[1], brick[2] + 2, brick[3] + 2))
 
 
-def erase_ball(surface: pygame.Surface, ballpos: Position):
+# def erase_ball(surface: pygame.Surface, ballpos: Position):
+def erase_ball(surface, ballpos):
     pygame.draw.circle(surface, Colours.White, ballpos, BALL_R + 1)
 
 
-def draw_ball(surface: pygame.Surface, ballpos: Position):
+# def draw_ball(surface: pygame.Surface, ballpos: Position):
+def draw_ball(surface, ballpos):
     pygame.draw.circle(surface, Colours.Green, ballpos, BALL_R)
     pygame.draw.circle(surface, Colours.Black, ballpos, BALL_R, 1)
 
 
-def draw_bat(surface: pygame.Surface, batpos: pygame.Rect):
+# def draw_bat(surface: pygame.Surface, batpos: pygame.Rect):
+def draw_bat(surface, batpos):
     batrect = (batpos, (BAT_W, BAT_H))
     pygame.draw.rect(surface, Colours.Blue, batrect)
     pygame.draw.rect(surface, Colours.Black, batrect, 2)
 
 
-def erase_bat(surface: pygame.Surface, batpos: pygame.Rect):
+# def erase_bat(surface: pygame.Surface, batpos: pygame.Rect):
+def erase_bat(surface, batpos):
     pygame.draw.rect(surface, Colours.White, (batpos, (BAT_W + 2, BAT_H + 2)))
 
 
@@ -179,8 +189,8 @@ class GameController(object):
 
     def move_bat(self, time_passed):
         erase_bat(self.surface, self.batpos)
-        dx = int(self.batspeed.dx * time_passed / self.speed)
-        dy = int(self.batspeed.dy * time_passed / self.speed)
+        dx = int(float(self.batspeed.dx) * float(time_passed) / float(self.speed))
+        dy = int(float(self.batspeed.dy) * float(time_passed) / float(self.speed))
         self.batpos = Position(self.batpos.x + dx, self.batpos.y + dy)  # dy=0, but gives symmetry with move_ball
         if (self.batpos.x + BAT_W) >= SCREEN_W:
             self.batpos = Position(SCREEN_W - BAT_W, self.batpos.y)
@@ -193,8 +203,8 @@ class GameController(object):
     def move_ball(self, time_passed):
         erase_ball(self.surface, self.ballpos)
         oldpos = self.ballpos
-        dx = int(self.ballspeed.dx * time_passed / self.speed)
-        dy = int(self.ballspeed.dy * time_passed / self.speed)
+        dx = int(float(self.ballspeed.dx) * float(time_passed) / float(self.speed))
+        dy = int(float(self.ballspeed.dy) * float(time_passed) / float(self.speed))
         self.ballpos = Position(self.ballpos.x + dx, self.ballpos.y + dy)
         # bounce off edge of screen
         if (self.ballpos.y - BALL_R <= 0):
@@ -255,24 +265,27 @@ def main():
     clock = pygame.time.Clock()
     quit = False
 
-    socketserver.ThreadingTCPServer.allow_reuse_address = True
-    with socketserver.UDPServer((args.host, args.port), BatController) as commandserver, \
-            socketserver.ThreadingTCPServer((args.host, args.port), ImageServer) as imageserver:
-        commandserver.timeout = imageserver.timeout = 0
-        commandserver.command = None
-        game_controller = GameController(surface, commandserver, args.speed)
-        imageserver.surface = surface
-        imageserver.format = args.format
-        while not quit:
-            event = pygame.event.poll()
-            if event.type == pygame.QUIT:
-                quit = True
-            elif event.type == pygame.NOEVENT:
-                game_controller.idle_loop(time_passed=clock.tick())
-                imageserver.handle_request()
+    SocketServer.ThreadingTCPServer.allow_reuse_address = True
+    commandserver = SocketServer.UDPServer((args.host, args.port), BatController)
+    imageserver = SocketServer.ThreadingTCPServer((args.host, args.port), ImageServer)
+    # the following is python 3 syntax, we are using python 2.7 for the simplicity of PyOpenCL
+    # with SocketServer.UDPServer((args.host, args.port), BatController) as commandserver, \
+    #         SocketServer.ThreadingTCPServer((args.host, args.port), ImageServer) as imageserver:
+    commandserver.timeout = imageserver.timeout = 0
+    commandserver.command = None
+    game_controller = GameController(surface, commandserver, args.speed)
+    imageserver.surface = surface
+    imageserver.format = args.format
+    while not quit:
+        event = pygame.event.poll()
+        if event.type == pygame.QUIT:
+            quit = True
+        elif event.type == pygame.NOEVENT:
+            game_controller.idle_loop(time_passed=clock.tick())
+            imageserver.handle_request()
 
-                screen.blit(surface, (0, 0))
-                pygame.display.flip()
+            screen.blit(surface, (0, 0))
+            pygame.display.flip()
 
 
 if __name__ == '__main__':

@@ -1,0 +1,7 @@
+setup_spam.py
+spammodule.c
+SpamPackageName.egg-info/PKG-INFO
+SpamPackageName.egg-info/SOURCES.txt
+SpamPackageName.egg-info/dependency_links.txt
+SpamPackageName.egg-info/top_level.txt
+SpamPackageName.egg-info/version.txt

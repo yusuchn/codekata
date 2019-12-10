@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a52f881-58c3-42ca-bfc0-3c9c5f654e1e" name="Default Changelist" comment="" />
+    <list default="true" id="1a52f881-58c3-42ca-bfc0-3c9c5f654e1e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/animate_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/animate_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/generaltools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/modified_im.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/plot_maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/plot_maps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +26,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlotGameBoard_allPlayerTyoes_withRemote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27846">
+            <state>
               <caret line="1638" column="64" selection-start-line="1638" selection-start-column="64" selection-end-line="1638" selection-end-column="64" />
             </state>
           </provider>
@@ -26,7 +35,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracks.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5984">
+            <state>
               <caret column="352373" selection-start-column="352373" selection-end-column="352373" />
             </state>
           </provider>
@@ -35,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state>
               <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
             </state>
           </provider>
@@ -44,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hello_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state>
               <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -53,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Todo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="-7">
               <caret line="11" selection-start-line="8" selection-end-line="14" selection-end-column="40" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -65,12 +74,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webframework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
+            <state relative-caret-position="91">
               <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
               <folding>
+                <element signature="e#0#32#0" expanded="true" />
                 <element signature="e#443#475#0" />
               </folding>
             </state>
@@ -80,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlotGameBoard_hVc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13600">
+            <state>
               <caret line="841" column="53" selection-start-line="841" selection-start-column="53" selection-end-line="841" selection-end-column="53" />
             </state>
           </provider>
@@ -89,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyDialog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3332">
+            <state>
               <caret line="197" column="42" selection-start-line="197" selection-start-column="42" selection-end-line="197" selection-end-column="42" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -138,6 +148,9 @@
       <find>randint</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -160,11 +173,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="177" />
-    <option name="y" value="512" />
-    <option name="width" value="1794" />
-    <option name="height" value="663" />
+    <option name="x" value="295" />
+    <option name="y" value="674" />
+    <option name="width" value="900" />
+    <option name="height" value="710" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -186,7 +200,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AlphaPuzzle" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
@@ -503,17 +517,17 @@
       <workItem from="1560427164555" duration="1727000" />
       <workItem from="1560858638690" duration="648000" />
       <workItem from="1565017518179" duration="38622000" />
-      <workItem from="1566211230797" duration="595000" />
+      <workItem from="1566211230797" duration="3651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492635000" />
+    <option name="totallyTimeSpent" value="495691000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="177" y="512" width="1794" height="663" extended-state="0" />
+    <frame x="295" y="674" width="900" height="710" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21799308" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.45" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -526,13 +540,13 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.1810842" side_tool="true" visible="true" weight="0.46603775" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.8189158" visible="true" weight="0.46603775" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.18214285" side_tool="true" visible="true" weight="0.43847486" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.81785715" visible="true" weight="0.43847486" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.80853516" weight="0.47417217" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" sideWeight="0.49737304" visible="true" weight="0.10322953" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49737304" visible="true" weight="0.21309523" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" x="0" y="0" width="175" height="632" id="Documentation" order="6" sideWeight="0.50262696" side_tool="true" weight="0.67267686" />
@@ -766,28 +780,28 @@
     <entry file="file://$PROJECT_DIR$/generaltools.py" />
     <entry file="file://$PROJECT_DIR$/PlotGameBoard_allPlayerTyoes_withRemote.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27846">
+        <state>
           <caret line="1638" column="64" selection-start-line="1638" selection-start-column="64" selection-end-line="1638" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracks.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5984">
+        <state>
           <caret column="352373" selection-start-column="352373" selection-end-column="352373" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state>
           <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hello_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state>
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -795,26 +809,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webframework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding>
-            <element signature="e#443#475#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PlotGameBoard_hVc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13600">
+        <state>
           <caret line="841" column="53" selection-start-line="841" selection-start-column="53" selection-end-line="841" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyDialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3332">
+        <state>
           <caret line="197" column="42" selection-start-line="197" selection-start-column="42" selection-end-line="197" selection-end-column="42" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -824,10 +828,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Todo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="-7">
           <caret line="11" selection-start-line="8" selection-end-line="14" selection-end-column="40" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webframework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#443#475#0" />
           </folding>
         </state>
       </provider>

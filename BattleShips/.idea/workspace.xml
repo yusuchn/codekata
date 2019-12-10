@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a52f881-58c3-42ca-bfc0-3c9c5f654e1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../packaging_tutorial/example_pkg/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.swagger-codegen/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/.swagger-codegen/VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleShips.py" beforeDir="false" afterPath="$PROJECT_DIR$/BattleShips.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/battleships.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/battleships.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/DefaultApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/DefaultApi.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/GetGame.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GetGame.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/GetGamesIndexResponse.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GetGamesIndexResponse.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/GetPlayer.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GetPlayer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/GetPlayersIndexResponse.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GetPlayersIndexResponse.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Knowledge.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Knowledge.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Move.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Move.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/MoveResponse.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/MoveResponse.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Player.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Player.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Ship.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Ship.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/StartGame.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/StartGame.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/StartGameResponse.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/StartGameResponse.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/generaltools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/git_push.sh" beforeDir="false" afterPath="$PROJECT_DIR$/git_push.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/default_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/api/default_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/api_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/get_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_games_index_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/get_games_index_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/get_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_players_index_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/get_players_index_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/knowledge.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/knowledge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/move_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/move_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/ship.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/ship.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/start_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/start_game_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/models/start_game_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/rest.py" beforeDir="false" afterPath="$PROJECT_DIR$/swagger_client/rest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test-requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_default_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_default_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_get_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_get_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_get_games_index_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_get_games_index_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_get_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_get_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_get_players_index_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_get_players_index_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_knowledge.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_knowledge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_move.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_move_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_move_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_ship.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ship.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_start_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_start_game_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_start_game_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_image_draw.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_image_draw.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tox.ini" beforeDir="false" afterPath="$PROJECT_DIR$/tox.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../codekata_neuron/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../codekata_neuron/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CodeKatas$PlotGameBoard.coverage" NAME="PlotGameBoard_1 Coverage Results" MODIFIED="1558530946442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BattleShips$BattleShips.coverage" NAME="BattleShips Coverage Results" MODIFIED="1570017843059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CodeKatas$PlotGameBoard_1.coverage" NAME="PlotGameBoard_1 Coverage Results" MODIFIED="1559115872172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BattleShips.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6401">
+              <caret line="532" selection-start-line="532" selection-end-line="532" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/swagger_client/models/start_game_options.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#197#210#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/swagger_client/models/start_game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1482949689/builtins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyDialog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="342" column="52" selection-start-line="342" selection-start-column="52" selection-end-line="342" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/generaltools.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="1116" column="58" selection-start-line="1116" selection-start-column="58" selection-end-line="1116" selection-end-column="58" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>result</find>
+      <find>getresult</find>
+      <find>e2</find>
+      <find>NW</find>
+      <find>computer_pieces_count</find>
+      <find>randint</find>
+      <find>_s.png</find>
+      <find>SlateGray1</find>
+      <find>white smoke</find>
+      <find>1100</find>
+      <find>(0, 0, 0, 0)</find>
+      <find>Start</find>
+      <find>cell_image</find>
+      <find>generate_test_title_img_pairs_list</find>
+      <find>(255, 255, 255, 255)</find>
+      <find>draw_game_board_on_image</find>
+      <find>draw_game_board</find>
+      <find>shuffle</find>
+      <find>progress_game_from_unknown_position</find>
+      <find>progress_game</find>
+      <find>make_moves</find>
+      <find>Move</find>
+      <find>games_game_id_grid_ref_put</find>
+      <find>TextFileClick</find>
+      <find>ImageFileClick</find>
+      <find>var_text_file</find>
+      <find>MyDialog</find>
+      <find>item =</find>
+      <find>grid_ref=F7</find>
+      <find>StartGame</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>.png</replace>
+      <replace>grey</replace>
+      <replace>white</replace>
+      <replace>(0, 0, 0, 0)</replace>
+      <replace>(255, 255, 255, 255)</replace>
+      <replace>Q</replace>
+      <replace>cell_text</replace>
+      <replace>fill_white</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tkSimpleDialog.py" />
+        <option value="$PROJECT_DIR$/PlotGameBoard.py" />
+        <option value="$PROJECT_DIR$/PlotGameBoard_hVh.py" />
+        <option value="$PROJECT_DIR$/PlotGameBoard_1.py" />
+        <option value="$PROJECT_DIR$/restful_api.py" />
+        <option value="$PROJECT_DIR$/players.json" />
+        <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/hello.py" />
+        <option value="$PROJECT_DIR$/tracks.json" />
+        <option value="$PROJECT_DIR$/hello_v1.py" />
+        <option value="$PROJECT_DIR$/Todo.py" />
+        <option value="$PROJECT_DIR$/webframework.py" />
+        <option value="$PROJECT_DIR$/PlotGameBoard_allPlayerTypes_noRemote.py" />
+        <option value="$PROJECT_DIR$/swagger_client/configuration.py" />
+        <option value="$PROJECT_DIR$/generaltools.py" />
+        <option value="$PROJECT_DIR$/BattleShips.py" />
+        <option value="$PROJECT_DIR$/MyDialog.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="995" />
+    <option name="y" value="399" />
+    <option name="width" value="1409" />
+    <option name="height" value="775" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BattleShips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShips" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BattleShips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShips" type="462c0819:PsiDirectoryNode" />
+              <item name="swagger_client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BattleShips" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BattleShips" type="462c0819:PsiDirectoryNode" />
+              <item name="swagger_client" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="C:/suyu/CodeKatas/GitHubRepos/nwalker/codekata-breakout" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ysu1\dev\codekata_neuron" />
+      <recent name="C:\Users\ysu1\PycharmProjects\CodeKatas" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.BattleShips">
+    <configuration name="BattleShips" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BattleShips.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MyDialog" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MyDialog.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotGameBoard_allPlayerTyoes_withRemote" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ysu1\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlotGameBoard_allPlayerTyoes_withRemote.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotGameBoard_allPlayerTypes_noRemote" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ysu1\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlotGameBoard_allPlayerTypes_noRemote.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotGameBoard_hVc" type="PythonConfigurationType" factoryName="Python">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ysu1\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlotGameBoard_hVc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotGameBoard_hVh" type="PythonConfigurationType" factoryName="Python">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ysu1\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlotGameBoard_hVh.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotGameBoard_hVh_CheckNeutronInOpponentRow" type="PythonConfigurationType" factoryName="Python">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ysu1\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlotGameBoard_hVh_CheckNeutronInOpponentRow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Todo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Todo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generaltools" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generaltools.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hello_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CodeKatas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hello_v1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.PlotGameBoard_allPlayerTyoes_withRemote" />
+      <item itemvalue="Python.PlotGameBoard_allPlayerTypes_noRemote" />
+      <item itemvalue="Python.PlotGameBoard_hVh" />
+      <item itemvalue="Python.PlotGameBoard_hVc" />
+      <item itemvalue="Python.PlotGameBoard_hVh_CheckNeutronInOpponentRow" />
+      <item itemvalue="Python.generaltools" />
+      <item itemvalue="Python.hello_v1" />
+      <item itemvalue="Python.Todo" />
+      <item itemvalue="Python.BattleShips" />
+      <item itemvalue="Python.MyDialog" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.BattleShips" />
+        <item itemvalue="Python.MyDialog" />
+        <item itemvalue="Python.generaltools" />
+        <item itemvalue="Python.Todo" />
+        <item itemvalue="Python.hello_v1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a52f881-58c3-42ca-bfc0-3c9c5f654e1e" name="Default Changelist" comment="" />
+      <created>1553596116815</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553596116815</updated>
+      <workItem from="1553596119710" duration="1444000" />
+      <workItem from="1553761713998" duration="9717000" />
+      <workItem from="1554188125371" duration="52816000" />
+      <workItem from="1554482485154" duration="6841000" />
+      <workItem from="1554549173816" duration="1854000" />
+      <workItem from="1554736857103" duration="54387000" />
+      <workItem from="1556264286736" duration="12179000" />
+      <workItem from="1556540387030" duration="262946000" />
+      <workItem from="1558632108794" duration="12637000" />
+      <workItem from="1559025343274" duration="723000" />
+      <workItem from="1559066638492" duration="27630000" />
+      <workItem from="1559324088731" duration="7224000" />
+      <workItem from="1559929561449" duration="483000" />
+      <workItem from="1560426712317" duration="31000" />
+      <workItem from="1560426801968" duration="58000" />
+      <workItem from="1560427030308" duration="73000" />
+      <workItem from="1560427164555" duration="1727000" />
+      <workItem from="1560858638690" duration="648000" />
+      <workItem from="1565017518179" duration="38622000" />
+      <workItem from="1566211230797" duration="3651000" />
+      <workItem from="1568224543934" duration="7559000" />
+      <workItem from="1568307309825" duration="60002000" />
+      <workItem from="1568745917666" duration="8342000" />
+      <workItem from="1568806108050" duration="22280000" />
+      <workItem from="1568892321883" duration="64263000" />
+      <workItem from="1569395837541" duration="2474000" />
+      <workItem from="1569399974503" duration="64229000" />
+      <workItem from="1569936756672" duration="10187000" />
+      <workItem from="1570018391116" duration="10208000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="745235000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="995" y="399" width="1409" height="775" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16234247" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989154" weight="0.3900293" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49568966" weight="0.33198926" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49963847" weight="0.32991204" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49963847" weight="0.32991204" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.19431715" side_tool="true" weight="0.76374745" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.8163413" weight="0.1670282" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.80550456" visible="true" weight="0.13862929" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49737304" weight="0.07736804" />
+      <window_info anchor="right" id="R Graphics" order="4" visible="true" weight="0.103780575" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" x="0" y="0" width="175" height="632" id="Documentation" order="6" sideWeight="0.50262696" side_tool="true" weight="0.67267686" />
+      <window_info anchor="right" id="Database" order="7" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/webframework.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/my_client/swagger_client/configuration.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BattleShips.py</url>
+          <line>583</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/swagger_client/models/start_game.py</url>
+          <line>139</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webframework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/HelloWorld/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Defense/plot_maps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/HelloWorld/Lib/site-packages/PIL/ImageColor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/HelloWorld/Lib/site-packages/PIL/ImageFont.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12495" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_board.png" />
+    <entry file="file://$PROJECT_DIR$/players.json" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_umd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_client/swagger.json" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/configuration.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/rest.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/get_players_index_response.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/api/default_api.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/battleships.yaml" />
+    <entry file="file://$PROJECT_DIR$/my_client/git_push.sh" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/ship.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/player.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/move.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/get_game.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/models/start_game.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/swagger_client/api_client.py" />
+    <entry file="file://$PROJECT_DIR$/my_client/setup.py" />
+    <entry file="file://$PROJECT_DIR$/PlotGameBoard_allPlayerTypes_noRemote.py" />
+    <entry file="file://$PROJECT_DIR$/../CodeKata-GogenSolver/gogen_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="215" column="21" lean-forward="true" selection-start-line="210" selection-end-line="225" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/suyu/CodeKatas/GitHubRepos/nwalker/codekata/battleship/client/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="104" column="45" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Defense/MyDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2474">
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-193">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/battleships.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2496" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/configuration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Defense/Defense.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11990">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Defense/animate_map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="38" column="65" lean-forward="true" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_image_draw.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/HelloWorld/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="260" selection-start-line="260" selection-end-line="260" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/rest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="227" selection-start-line="227" selection-end-line="227" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/api_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/api/default_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="316" selection-start-line="316" selection-end-line="316" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_new_game.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/get_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="3547" selection-start-line="3547" selection-end-line="3547" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/get_player.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/start_game_response.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="342" column="52" selection-start-line="342" selection-start-column="52" selection-end-line="342" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1482949689/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/start_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/models/start_game_options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#197#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BattleShips.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6401">
+          <caret line="532" selection-start-line="532" selection-end-line="532" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generaltools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="1116" column="58" selection-start-line="1116" selection-start-column="58" selection-end-line="1116" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

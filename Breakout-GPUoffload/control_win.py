@@ -47,7 +47,7 @@ or request a complete state update to ensure that the client's state is in sync 
 '''
 
 import socket
-import socketserver
+import SocketServer
 from PIL import Image, ImageDraw, ImageFont, ImageColor
 import pygame
 
@@ -56,7 +56,7 @@ import io
 # import imageio
 import sys
 
-import tkinter
+import Tkinter
 import matplotlib
 from generaltools import display_all_images_in_plot, matplot_display_setup, get_rgb_list
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
@@ -70,12 +70,15 @@ import time
 import copy
 from collections import namedtuple
 
+print_debug_line_by_line = False
 
 def scan_line_for_objects(rgb_list_param, line_index_to_scan_param, image_scan_direction_param,
                           object_colour, background_colour):
     object_positions = list()
     rgb_h = len(rgb_list_param)
     rgb_w = len(rgb_list_param[0])
+    print('scan_line_for_objects - rgb_list_param.rgb_h={}, rgb_list_param.rgb_w={}'.format(rgb_h, rgb_w))
+
     # note, the rgb_list is also flopped as it directly from pix, but,
     # scan_direction_param here references to image direction not rgb_list
     scan_range = 0
@@ -108,12 +111,14 @@ def scan_line_for_objects(rgb_list_param, line_index_to_scan_param, image_scan_d
         elif image_scan_direction_param == 'h':  # referencing scan in image horizontal direction
             rgb_row_index = i
             rgb_col_index = line_index_to_scan_param
-        if object_colour == (255, 0, 0):
-            print('rgb_list_param[{}][{}]={}'.format(rgb_row_index, rgb_col_index,
-                rgb_list_param[rgb_row_index][rgb_col_index]))
-        if rgb_list_param[rgb_row_index][rgb_col_index] == object_colour:  # (255, 0, 0):
+        if (print_debug_line_by_line):
             if object_colour == (255, 0, 0):
-                print("Colour match")
+                print('rgb_list_param[{}][{}]={}'.format(rgb_row_index, rgb_col_index,
+                    rgb_list_param[rgb_row_index][rgb_col_index]))
+        if rgb_list_param[rgb_row_index][rgb_col_index] == object_colour:  # (255, 0, 0):
+            if (print_debug_line_by_line):
+                if object_colour == (255, 0, 0):
+                    print("Colour match")
             if len(object_position) == 0:
                 object_position['start'] = i
         elif rgb_list_param[rgb_row_index][rgb_col_index] == background_colour:  #(255, 255, 255):
@@ -121,7 +126,8 @@ def scan_line_for_objects(rgb_list_param, line_index_to_scan_param, image_scan_d
                 object_position['end'] = i - 1
                 # the following needs to be tested out as we may be able to get away by not copying
                 object_position_copy = copy.deepcopy(object_position)
-                print('object_position={}, object_position_copy={}\n'.format(object_position, object_position_copy))
+                if (print_debug_line_by_line):
+                    print('object_position={}, object_position_copy={}\n'.format(object_position, object_position_copy))
                 object_positions.append(object_position_copy)
                 object_position.clear()
     return object_positions
@@ -252,8 +258,9 @@ def get_original_ball_center_and_size(im_param, bricks):
     while (len(ball_horizontal_positions) == 0 and ball_row_to_scan < im_h):
         ball_row_to_scan += 1
         ball_horizontal_positions = scan_line_for_objects(rgb_list, ball_row_to_scan, 'h', (0, 255, 0), (255, 255, 255))
-        print('get_original_ball_center_and_size - ball_row_to_scan = {}\nball_horizontal_positions = {}'.format(
-            ball_row_to_scan, ball_horizontal_positions))
+        if (print_debug_line_by_line):
+            print('get_original_ball_center_and_size - ball_row_to_scan = {}\nball_horizontal_positions = {}'.format(
+                ball_row_to_scan, ball_horizontal_positions))
 
     if len(ball_horizontal_positions) == 0:
         return False, None, None
@@ -286,7 +293,8 @@ def get_original_ball_center_and_size(im_param, bricks):
 BallRelativePositionToBrick = \
     namedtuple('BallRelativePositionToBrick', ['below_brick', 'above_brick', 'right_of_brick', 'left_of_brick'])
 
-def get_relative_position_to_brick(ball_square, brick:pygame):
+# def get_relative_position_to_brick(ball_square, brick:pygame.Rect):   # brick:pygame only supported by python 3
+def get_relative_position_to_brick(ball_square, brick):
     below_brick = False
     above_brick = False
     right_of_brick = False
@@ -332,8 +340,10 @@ def get_predicted_position(curr_image, prev_image, bricks, brick_states):
 
     return 'L'
 
+# def search_for_ball(search_area, search_margin, ball_r,
+#                     state_changed_brick: pygame.Rect, rgb_list, image_w, image_h):
 def search_for_ball(search_area, search_margin, ball_r,
-                    state_changed_brick: pygame.Rect, rgb_list, image_w, image_h):
+                    state_changed_brick, rgb_list, image_w, image_h):
     ball_x_min = 0  # state_changed_brick.x
     ball_x_max = 0  # state_changed_brick.x
     ball_y_min = 0  # state_changed_brick.y
@@ -400,7 +410,8 @@ def search_for_ball(search_area, search_margin, ball_r,
         return False, None, None
 
 
-def get_command_message(curr_bat: pygame.Rect, predicted_ball_landing_position):
+# def get_command_message(curr_bat: pygame.Rect, predicted_ball_landing_position):
+def get_command_message(curr_bat, predicted_ball_landing_position):
     if ((curr_bat.x < predicted_ball_landing_position) and
             (predicted_ball_landing_position < (curr_bat.x + curr_bat.w))):
         command_message = '.'
@@ -408,13 +419,19 @@ def get_command_message(curr_bat: pygame.Rect, predicted_ball_landing_position):
         command_message = 'R'
     elif (predicted_ball_landing_position < curr_bat.x):
         command_message = 'L'
+    return command_message
 
 
-def get_predicted_ball_landing_position(curr_ball_relative_postion_to_brick: BallRelativePositionToBrick,
-                                        prev_ball_relative_postion_to_brick: BallRelativePositionToBrick,
-                                        curr_ball_center: BallCenter,
-                                        prev_ball_center: BallCenter,
-                                        curr_ball_square: BallSquare, curr_bat: pygame.Rect, image_w, image_h):
+# def get_predicted_ball_landing_position(curr_ball_relative_postion_to_brick: BallRelativePositionToBrick,
+#                                         prev_ball_relative_postion_to_brick: BallRelativePositionToBrick,
+#                                         curr_ball_center: BallCenter,
+#                                         prev_ball_center: BallCenter,
+#                                         curr_ball_square: BallSquare, curr_bat: pygame.Rect, image_w, image_h):
+def get_predicted_ball_landing_position(curr_ball_relative_postion_to_brick,
+                                        prev_ball_relative_postion_to_brick,
+                                        curr_ball_center,
+                                        prev_ball_center,
+                                        curr_ball_square, curr_bat, image_w, image_h):
     # note, we only caluclate the trajectory if we detect any brick is knocked out,
     # prev_ball must have hit the brick and resulted in the curr_ball position, so,
     # valid to use curr_ball_relative_postion_to_brick and prev_ball_relative_postion_to_brick
@@ -469,7 +486,7 @@ def get_predicted_ball_landing_position(curr_ball_relative_postion_to_brick: Bal
             #       and bounced off again, for now, keep under the ball
             predicted_ball_landing_x = curr_ball_center.x
 
-    return predicted_ball_landing_x
+    return int(predicted_ball_landing_x)
 
 
 def set_curr_to_prev(curr_ball_center, curr_ball_square, curr_bat, curr_image):
@@ -481,12 +498,26 @@ def set_curr_to_prev(curr_ball_center, curr_ball_square, curr_bat, curr_image):
 def get_curr_ball_from_prev_ball(prev_ball_center, ball_r, search_margin, im_param):
     im_w = im_param.size[0]
     im_h = im_param.size[1]
+    curr_ball_horizontal_positions = None
+    curr_ball_vertical_positions = None
     print('search_for_ball_around_prev_ball - im_h={}, im_w={}'.format(im_h, im_w))
     rgb_list, pix = get_rgb_list(im_param)
     # NOTE, rgb_list is flopped, so rgb_list col is the image row to scan
-    for j in range(len(rgb_list[0])):
-        scan_line_for_objects(rgb_list, j, 'h', (0, 255, 0), (255, 255, 255))
-    return curr_ball_center
+    start_y = max(0, prev_ball_center.y-search_margin)
+    end_y = min(im_h, prev_ball_center.y-search_margin)
+    for j in range(start_y, end_y, 1):
+        curr_ball_horizontal_positions = scan_line_for_objects(rgb_list, j, 'h', (0, 255, 0), (255, 255, 255))
+        if len(curr_ball_horizontal_positions) > 0:
+            ball_center_x = int(curr_ball_horizontal_positions[0]['start'] +
+                                     (curr_ball_horizontal_positions[0]['end']-curr_ball_horizontal_positions[0]['start'])/2)
+            curr_ball_vertical_positions = \
+                scan_line_for_objects(rgb_list, ball_center_x, 'v', (0, 255, 0), (255, 255, 255))
+            if len(curr_ball_vertical_positions) > 0:
+                ball_center_y = int(curr_ball_vertical_positions[0]['start'] +
+                                         (curr_ball_vertical_positions[0]['end']-curr_ball_vertical_positions[0]['start'])/2)
+                return BallCenter(ball_center_x, ball_center_y)
+            break
+    return None
 
 
 root, fig, plot_canvas, toolbar, button = matplot_display_setup(6, 3)
@@ -511,6 +542,7 @@ def main():
     prev_ball_square = None
     curr_bat = None
     prev_bat = None
+    curr_rgb_list = None
 
     while True:
         # for sending command asking for image to return using UDP portocol,
@@ -534,6 +566,8 @@ def main():
         try:
             # construct and send game command to the server
             command_message = ''
+            if curr_image:
+                curr_rgb_list = get_rgb_list(curr_image)
 
             do_not_increment_image_count = False
             # get command_message to move the bat
@@ -550,12 +584,13 @@ def main():
                 # bat_success = False
                 # got the first iamge back, need to retrieve the bricks layout, only need once for a game
                 bat_success, curr_bat = get_bat(curr_image)
-                curr_rgb_list = get_rgb_list(curr_image)
+                curr_rgb_list, curr_pix = get_rgb_list(curr_image)
 
                 if image_count == 1:
                     bricks_success, bricks, brick_states = get_bricks(curr_image)
                     ball_success, org_ball_center, ball_r = get_original_ball_center_and_size(curr_image, bricks)
                     if ball_success:
+                        print('main - successfully getting initial bricks and ball positions...')
                         curr_ball_center = org_ball_center
                         curr_ball_square = BallSquare(curr_ball_center.x-ball_r, curr_ball_center.x-ball_r,
                                                       curr_ball_center.y-ball_r, curr_ball_center.y+ball_r)
@@ -566,58 +601,73 @@ def main():
                     else:
                         # if the game has started and the ball has dropped to the floor when we started
                         # running the control window, reset the game
+                        print('main - resetting the game...')
                         do_not_increment_image_count = True
                         command_message = 'R'
-                ###########################################################################
-                if command_message != 'R':
-                    predicted_ball_landing_position = curr_bat.x
-                    # image analysis to get the command, 'L', 'R', or '.'
-                    brick_states_changed, brick_states, state_changed_brick = \
-                        update_brick_states(curr_image, bricks, brick_states)
-                    print('brick_states_changed={}, brick_states={}, state_changed_brick={}'.format(
-                        brick_states_changed, brick_states, state_changed_brick
-                    ))
-                    if (brick_states_changed):
-                        print('brick_states_changed = True, searching for ball with the following parameters:\n'
-                              'search_margin={}, ball_r={}, state_changed_brick={}, \ncurr_rgb_list size=({}, {})\n'.format(
-                            search_margin, ball_r, state_changed_brick, len(curr_rgb_list), len(curr_rgb_list[0])
-                        ))
-                        ball_success, curr_ball_center, curr_ball_square = \
-                            search_for_ball('below', search_margin, ball_r, state_changed_brick,
-                                            curr_rgb_list, image_w, image_h)
-                        if not ball_success:
-                            ball_success, curr_ball_center, curr_ball_square = \
-                                search_for_ball('right', search_margin, ball_r, state_changed_brick,
-                                                curr_rgb_list, image_w, image_h)
-                        if not ball_success:
-                            ball_success, curr_ball_center, curr_ball_square = \
-                                search_for_ball('left', search_margin, ball_r, state_changed_brick,
-                                                curr_rgb_list, image_w, image_h)
-                        if not ball_success:
-                            ball_success, curr_ball_center, curr_ball_square = \
-                                search_for_ball('above', search_margin, ball_r, state_changed_brick,
-                                                curr_rgb_list, image_w, image_h)
-                        if ball_success:
-                            # keep under the call by default
+                        ###########################################################################
+                    if command_message != 'R' and command_message != 'G':
+                        curr_rgb_list, curr_pix = get_rgb_list(curr_image)
+                        print('main - about to predict landing position...command_message = {}, '
+                              'curr_image width = {}, curr_image_height = {}, '
+                              'curr_rgb_list rows = {}, curr_rgb_list cols = {}'.
+                              format(command_message,
+                                     curr_image.size[0], curr_image.size[1],
+                                     len(curr_rgb_list), len(curr_rgb_list[0])))
+                        # predicted_ball_landing_position = curr_bat.x
+                        # # image analysis to get the command, 'L', 'R', or '.'
+                        # brick_states_changed, brick_states, state_changed_brick = \
+                        #     update_brick_states(curr_image, bricks, brick_states)
+                        # print('brick_states_changed={}, brick_states={}, state_changed_brick={}'.format(
+                        #     brick_states_changed, brick_states, state_changed_brick))
+                        # if (brick_states_changed):
+                        #     print('brick_states_changed = True, searching for ball with the following parameters:\n'
+                        #           'search_margin={}, ball_r={}, state_changed_brick={}, \ncurr_rgb_list size=({}, {})\n'.format(
+                        #         search_margin, ball_r, state_changed_brick, len(curr_rgb_list), len(curr_rgb_list[0])
+                        #     ))
+                        #     ball_success, curr_ball_center, curr_ball_square = \
+                        #         search_for_ball('below', search_margin, ball_r, state_changed_brick,
+                        #                         curr_rgb_list, image_w, image_h)
+                        #     if not ball_success:
+                        #         ball_success, curr_ball_center, curr_ball_square = \
+                        #             search_for_ball('right', search_margin, ball_r, state_changed_brick,
+                        #                             curr_rgb_list, image_w, image_h)
+                        #     if not ball_success:
+                        #         ball_success, curr_ball_center, curr_ball_square = \
+                        #             search_for_ball('left', search_margin, ball_r, state_changed_brick,
+                        #                             curr_rgb_list, image_w, image_h)
+                        #     if not ball_success:
+                        #         ball_success, curr_ball_center, curr_ball_square = \
+                        #             search_for_ball('above', search_margin, ball_r, state_changed_brick,
+                        #                             curr_rgb_list, image_w, image_h)
+                        #     if ball_success:
+                        #         # keep under the call by default
+                        #         predicted_ball_landing_position = int(curr_ball_center.x)
+                        #         # if image_count > 1, i.e.we have an prev_image, update predicted_ball_landing_position
+                        #         if image_count > 1:
+                        #             curr_ball_relative_postion_to_brick = \
+                        #                 get_relative_position_to_brick(curr_ball_square, state_changed_brick)
+                        #             prev_ball_relative_postion_to_brick = \
+                        #                 get_relative_position_to_brick(prev_ball_square, state_changed_brick)
+                        #             predicted_ball_landing_position = \
+                        #                 get_predicted_ball_landing_position(
+                        #                     curr_ball_relative_postion_to_brick, prev_ball_relative_postion_to_brick,
+                        #                     curr_ball_center, prev_ball_center, curr_ball_square, curr_bat, image_w, image_h)
+                        # else:  # if not brick knocked off, just follow the ball
+                        #     curr_ball_center = get_curr_ball_from_prev_ball(prev_ball_center, ball_r, search_margin, curr_image)
+                        #     predicted_ball_landing_position = curr_ball_center.x
+
+                        curr_ball_center = get_curr_ball_from_prev_ball(prev_ball_center, ball_r, search_margin,
+                                                                        curr_image)
+                        if curr_ball_center:
                             predicted_ball_landing_position = curr_ball_center.x
-                            # if image_count > 1, i.e.we have an prev_image, update predicted_ball_landing_position
-                            if image_count > 1:
-                                curr_ball_relative_postion_to_brick = \
-                                    get_relative_position_to_brick(curr_ball_square, state_changed_brick)
-                                prev_ball_relative_postion_to_brick = \
-                                    get_relative_position_to_brick(prev_ball_square, state_changed_brick)
-                                predicted_ball_landing_position = \
-                                    get_predicted_ball_landing_position(
-                                        curr_ball_relative_postion_to_brick, prev_ball_relative_postion_to_brick,
-                                        curr_ball_center, prev_ball_center, curr_ball_square, curr_bat, image_w, image_h)
-                    else:  # if not brick knocked off, just follow the ball
-                        curr_ball_center = get_curr_ball_from_prev_ball(prev_ball_center, ball_r, search_margin, curr_image)
-                        predicted_ball_landing_position = curr_ball_center.x
-                    command_message = get_command_message(curr_bat, predicted_ball_landing_position)
-                    # done our calculations, set the curr's to prev's
+                            command_message = get_command_message(curr_bat, predicted_ball_landing_position)
+                            print('main - completed predicting landing position, curr_bat = {}. curr_ball_center = {}. '
+                                  'predicted_ball_landing_position = {}, command_message = {}'.
+                                  format(curr_bat, curr_ball_center, predicted_ball_landing_position, command_message))
+                        ###########################################################################
+                        # done our calculations, set the curr's to prev's
                     prev_ball_center, prev_ball_square, pre_bat, prev_image = \
                         set_curr_to_prev(curr_ball_center, curr_ball_square, curr_bat, curr_image)
-                    ###########################################################################
                     # curr_image = None
 
             if command_message != '':
@@ -650,7 +700,8 @@ def main():
                         pairs[prev_image_title] = prev_image
                     display_all_images_in_plot(1, pairs, fig, plot_canvas)
                 # time.sleep(0.1)
-        except ConnectionRefusedError:
+        # except SocketServer.ConnectionRefusedError:
+        except socket.error:
             print("Server not running. Waiting.")
             # time.sleep(0.5)
         # finally:
