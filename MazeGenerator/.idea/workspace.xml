@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e95b989-d2f4-4e1c-a8a9-2fdd9ded9700" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AlphaPuzzle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BattleShips/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShips/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BattleShips/.swagger-codegen/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShips/.swagger-codegen/VERSION" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BattleShips/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShips/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BattleShips/docs/DefaultApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShips/docs/DefaultApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BattleShips/tox.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShips/tox.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Breakout-GPUoffload/control_win.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Breakout-GPUoffload/control_win.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Breakout-GPUoffload/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Breakout-GPUoffload/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Breakout-GPUoffload/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Breakout-GPUoffload/generaltools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Breakout/control_win.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Breakout/control_win.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Breakout/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Breakout/generaltools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeKata-GogenSolver/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Defense/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../codekata_neuron/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../codekata_neuron/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +15,7 @@
     <SUITE FILE_PATH="coverage/Breakout$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1574103062353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Breakout$control_win.coverage" NAME="control_win Coverage Results" MODIFIED="1572374635286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MazeGenerator$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1575288460824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MazeGenerator$maze_generator.coverage" NAME="maze_generator Coverage Results" MODIFIED="1575654458696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MazeGenerator$maze_generator.coverage" NAME="maze_generator Coverage Results" MODIFIED="1576259142941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="MazeGenerator" />
@@ -38,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generaltools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20412">
+            <state>
               <caret line="1463" selection-start-line="1463" selection-end-line="1463" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -50,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/maze_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="785" column="30" lean-forward="true" selection-start-line="785" selection-start-column="30" selection-end-line="785" selection-end-column="30" />
+            <state relative-caret-position="373">
+              <caret line="572" column="89" lean-forward="true" selection-start-line="572" selection-start-column="89" selection-end-line="572" selection-end-column="89" />
               <folding>
                 <element signature="e#11#29#0" expanded="true" />
               </folding>
@@ -70,13 +57,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reset_maze</find>
-      <find>randomise_to_draw</find>
-      <find>get_random_true</find>
-      <find>get_random_move_direction</find>
-      <find>get_randomized_move_direction</find>
-      <find>current_block_index_param</find>
-      <find>next_block_index.</find>
       <find>test_or</find>
       <find>special_rule_for_path_1</find>
       <find>maze_path</find>
@@ -96,10 +76,17 @@
       <find>update_to_draw_for_current_and_next_block</find>
       <find>get_randomized_move_direction_from_possible_moves</find>
       <find>get_move_direction</find>
-      <find>get_next_start_block</find>
       <find>create_path</find>
       <find>move_direction=</find>
       <find>current_spanoff_block_index</find>
+      <find>maze</find>
+      <find>new_start_r_to_drawe</find>
+      <find>current_interval</find>
+      <find>about to break</find>
+      <find>get_next_start_block</find>
+      <find>update_border</find>
+      <find>new_start</find>
+      <find>check_possible_borders_to_open</find>
     </findStrings>
     <replaceStrings>
       <replace>reset_maze_properties</replace>
@@ -114,6 +101,10 @@
       <replace>special_rules_for_path_param</replace>
       <replace>Block_Index_SpanOff_Pair</replace>
       <replace>candidate_pair_param</replace>
+      <replace>maze_param</replace>
+      <replace>new_start_param</replace>
+      <replace>i</replace>
+      <replace>block_index_param</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -135,10 +126,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1740" />
-    <option name="y" value="741" />
-    <option name="width" value="793" />
-    <option name="height" value="633" />
+    <option name="x" value="1265" />
+    <option name="y" value="431" />
+    <option name="width" value="1290" />
+    <option name="height" value="903" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -170,7 +161,7 @@
     <property name="last_opened_file_path" value="C:/suyu/CodeKatas/GitHubRepos/nwalker/codekata-gogen/gogen2.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -306,11 +297,12 @@
       <workItem from="1574426331917" duration="110138000" />
       <workItem from="1575277117721" duration="80573000" />
       <workItem from="1575966889689" duration="1862000" />
+      <workItem from="1575999249290" duration="39909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="473648000" />
+    <option name="totallyTimeSpent" value="513557000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -322,11 +314,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1785" y="800" width="769" height="633" extended-state="0" />
+    <frame x="1265" y="431" width="1290" height="903" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5007215" side_tool="true" weight="0.03106126" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4992785" visible="true" weight="0.05077574" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4992785" visible="true" weight="0.03089431" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
@@ -337,7 +329,7 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.21694915" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.11818182" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.420398" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -365,12 +357,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/maze_generator.py</url>
-          <line>380</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/maze_generator.py</url>
-          <line>835</line>
+          <line>842</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
@@ -607,7 +594,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/generaltools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20412">
+        <state>
           <caret line="1463" selection-start-line="1463" selection-end-line="1463" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -617,8 +604,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/maze_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="785" column="30" lean-forward="true" selection-start-line="785" selection-start-column="30" selection-end-line="785" selection-end-column="30" />
+        <state relative-caret-position="373">
+          <caret line="572" column="89" lean-forward="true" selection-start-line="572" selection-start-column="89" selection-end-line="572" selection-end-column="89" />
           <folding>
             <element signature="e#11#29#0" expanded="true" />
           </folding>

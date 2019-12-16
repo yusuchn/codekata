@@ -50,17 +50,11 @@ Block_Index = namedtuple('Block_Index', ['i', 'j'])
 
 # initialise values
 create_same_randomised_array = True
-global_flag_path = True
+global_flag_path = False
 draw_block = True
-special_rule_for_path1 = True
-# note, when setting total_rows and total_cols to 50, interestingly:
-# 1. if setting special_rules_for_path to ['D', 'R', 'L', 'U'], block coverage can be to 0.51,
-#    results generated very quickly, but if setting to 0.41, locked in loop
-# 2. if setting special_rules_for_path to ['D', 'R'], block coverage can be set to 0.49,
-#    results generated very quickly, but if setting to 0.5, locked in loop
-special_rules_for_path = ['D', 'R', 'L', 'U']   # ['D', 'R']    # ['D', 'R', 'L']   #
-# note when setting a 50x50 grid, the block converage threshold has to be set lower to avoid being trapped
-block_in_path_percentage_threshold = 0.81   # 0.92   # 0.9   #
+special_rule_for_path1 = False
+special_rules_for_path = ['D', 'R', 'L', 'U']
+block_in_path_percentage_threshold = 1    # 0.81   #0.9   #  0.92   #
 draw_debug = False
 print_func_name = False
 test_or_for_line_container = False
@@ -196,13 +190,14 @@ def draw_maze_use_block(canvas_param, maze_param, maze_path_param, maze_path_tex
             #     text_to_draw = str(maze_path_param[i][j])    # maze_path_text_param[i][j]
             #     # print('text_to_draw={}'.format(text_to_draw))
             #     canvas_param.create_text(text_x, text_y, font=font_str, text=text_to_draw)
-            text_x = maze_param[i][j].t.x_b + text_shiift_param
-            text_y = maze_param[i][j].t.y_b + text_shiift_param
-            font_size = int(w/2)+1
-            font_str = "Arial {}".format(font_size)
-            text_to_draw = str(maze_path_param[i][j])    # maze_path_text_param[i][j]
-            # print('text_to_draw={}'.format(text_to_draw))
-            canvas_param.create_text(text_x, text_y, font=font_str, text=text_to_draw)
+            if global_flag_path:
+                text_x = maze_param[i][j].t.x_b + text_shiift_param
+                text_y = maze_param[i][j].t.y_b + text_shiift_param
+                font_size = int(w/2)+1
+                font_str = "Arial {}".format(font_size)
+                text_to_draw = str(maze_path_param[i][j])    # maze_path_text_param[i][j]
+                # print('text_to_draw={}'.format(text_to_draw))
+                canvas_param.create_text(text_x, text_y, font=font_str, text=text_to_draw)
 
     canvas_param.pack(fill=BOTH, expand=1)
     # canvas_param.pack(fill=BOTH, expand=0)
@@ -305,77 +300,42 @@ def create_path(start_block_index_param: Block_Index, path_id_param, special_rul
     if print_func_name:
         print('function: {}'.format(sys._getframe().f_code.co_name))
 
-    # when setting maze path:
-    # 1. randomly generate a path from entance to exit, give it a path_ID, i.e. 1
-    # 2. link as many blocks as possible to the path, i.e. mark the block in maze_path array to path_ID,
-    #    this is to ensure that all points connect to the entrance, when exhausted, question here is,
-    #    should we link a path ID to a block? and all other points on the path too?
-    # 3. randomly generate a new path, starting from a block on the current path, and, give it a new path ID,
-    #    say, current_path_ID+1, and then somehow, check this new path jointed to the path that it span out from,
-    #    then merge, how?
-    # 4. repeat step 2~3
-
     # note, for this aplication, perhaps not suitable to use recursive functions,
     # because the results are not incemental, basically, the strategy is to define a new start block
     # start a new path, the step that repeatedly creating a path is done in main
     # go_recursive = False
 
-    path_index_list = list()
-    if (maze_path_param[start_block_index_param.i][start_block_index_param.j] == 0):
-        maze_path_param[start_block_index_param.i][start_block_index_param.j] = path_id_param
-        path_index_list.append(start_block_index_param)
+    # if maze_path_param[start_block_index_param.i][start_block_index_param.j] == 0:
+    maze_path_param[start_block_index_param.i][start_block_index_param.j] = path_id_param
 
     current_block_index = start_block_index_param
     # note, do not get the block_neighbors in the while loop, because the next block on the path
     # may change the property, so get the neighbor properties after the path has been constructed
     while True:
-        # go_recursive = False
         move_direction = get_move_direction(current_block_index, path_id_param, special_rules_for_path_param,
                                             maze_param, maze_path_param)
         print('move_direction={}'.format(move_direction))
-        # cannot move, exit
-        # if move_direction == 'N/A':
-        #     return None, maze_param, maze_path_param, maze_path_text_param
-
+        if move_direction == 'N/A':
+            break
         block_text = get_block_text(move_direction)
         next_block_index = get_next_block_index(current_block_index, move_direction)
-        if ((next_block_index.i == current_block_index.i and next_block_index.j == current_block_index.j) or
-            (next_block_index.i == entrance.i and next_block_index.j == entrance.j)):
-            maze_path_param[current_block_index.i][current_block_index.j] = path_id_param
-            maze_path_text_param[current_block_index.i][current_block_index.j] = block_text
-            # go_recursive = True
-            break
-        elif (next_block_index.i == exit.i and next_block_index.j == exit.j):
-            maze_path_param[current_block_index.i][current_block_index.j] = path_id_param
-            maze_path_text_param[current_block_index.i][current_block_index.j] = block_text
+        maze_path_param[current_block_index.i][current_block_index.j] = path_id_param
+        maze_path_text_param[current_block_index.i][current_block_index.j] = block_text
+        if (next_block_index.i == exit.i and next_block_index.j == exit.j):
             # we come to the end, update the next block path_id too as it's used to determine if the text gets drawn
             maze_path_param[next_block_index.i][next_block_index.j] = path_id_param
             # no need to update the next block text, keep it as 'X', it will be drawn as we have set the path_id
             update_to_draw_for_current_and_next_block(current_block_index, next_block_index, maze_param)
-            if current_block_index not in path_index_list:
-                path_index_list.append(current_block_index)
             break
         else:
-            maze_path_param[current_block_index.i][current_block_index.j] = path_id_param
-            maze_path_text_param[current_block_index.i][current_block_index.j] = block_text
             # search continue, no need to update path_id for next block as it will become current block
             update_to_draw_for_current_and_next_block(current_block_index, next_block_index, maze_param)
-            if current_block_index not in path_index_list:
-                path_index_list.append(current_block_index)
+            # if the next block is already on a path, don't go further
+            if maze_path_param[next_block_index.i][next_block_index.j] > 0:
+                break
         current_block_index = Block_Index(next_block_index.i, next_block_index.j)
 
-    # if len(path_index_list) == 0:
-    #     return None, maze_param, maze_path_param, maze_path_text_param
-
-    # Now we can loop through the path_index_list and get the neighbor properties
-    path_block_index_neighborpaths_pairs = list()
-    for index in path_index_list:
-        block_neighborpaths = get_block_neighbor_paths(index, maze_path_param)
-        path_block_index_neighborpaths_pairs.append(Block_Index_NeighborPaths_Pair(
-            index, block_neighborpaths))
-    print('created path {}, path_block_index_neighborpaths_pairs={}'.format(
-        path_id_param, path_block_index_neighborpaths_pairs))
-    return path_block_index_neighborpaths_pairs, maze_param, maze_path_param, maze_path_text_param
+    return maze_param, maze_path_param, maze_path_text_param
 
 
 def get_block_neighbor_paths(current_block_index_param, maze_path_param):
@@ -493,11 +453,11 @@ def get_randomized_value_from_possible_values(possible_values_param):
     list_to_randomise = list(range(1, random_array_range))
     # print('list_to_randomise={}'.format(list_to_randomise))
     randomised_value = random.choice(list_to_randomise)
-    print('randomised_value={}'.format(randomised_value))
+    # print('randomised_value={}'.format(randomised_value))
     ret_value = None
     for i in range(total_possible_values):
         current_interval = list(intervals[i])
-        print('i={}, current_interval={}'.format(i, current_interval))
+        # print('i={}, current_interval={}'.format(i, current_interval))
         start = current_interval[0]
         end = current_interval[1]
         # the following is to avoid the situation that randomised_value = 49, and last interval is [36, 48]
@@ -523,7 +483,7 @@ def get_next_block_index(current_block_index_param, move_direction_param):
         next_block_index = Block_Index(current_block_index_param.i-1, current_block_index_param.j)
     elif move_direction_param == 'D':
         next_block_index = Block_Index(current_block_index_param.i+1, current_block_index_param.j)
-    else:   # move == 'N/A'
+    else:   # eg. move_direction_param == 'N/A'
         next_block_index = Block_Index(current_block_index_param.i, current_block_index_param.j)
     
     return next_block_index
@@ -561,159 +521,216 @@ def update_to_draw_for_current_and_next_block(current_block_index_param, next_bl
         current_block_b_to_draw = 0     # moving down, bottom border of the current block set not to draw
         next_block_t_to_draw = 0        # moving down, top corder of the next block set not to draw
 
-    # # todo, the following clause of code need refacturing, because if we know the current index and the next index
-    # #  we do not need to know move_direction_param
-    #
-    # set current and next block
-    maze[current_block_index_param.i][current_block_index_param.j] = Single_Block_With_Four_Borders(
-        Single_BlockBorder(maze[current_block_index_param.i][current_block_index_param.j].t.x_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].t.y_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].t.x_e,
-                           maze[current_block_index_param.i][current_block_index_param.j].t.y_e,
-                           current_block_t_to_draw),
-        Single_BlockBorder(maze[current_block_index_param.i][current_block_index_param.j].b.x_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].b.y_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].b.x_e,
-                           maze[current_block_index_param.i][current_block_index_param.j].b.y_e,
-                           current_block_b_to_draw),
-        Single_BlockBorder(maze[current_block_index_param.i][current_block_index_param.j].l.x_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].l.y_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].l.x_e,
-                           maze[current_block_index_param.i][current_block_index_param.j].l.y_e,
-                           current_block_l_to_draw),
-        Single_BlockBorder(maze[current_block_index_param.i][current_block_index_param.j].r.x_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].r.y_b,
-                           maze[current_block_index_param.i][current_block_index_param.j].r.x_e,
-                           maze[current_block_index_param.i][current_block_index_param.j].r.y_e,
-                           current_block_r_to_draw))
-    maze[next_block_index_param.i][next_block_index_param.j] = Single_Block_With_Four_Borders(
-        Single_BlockBorder(maze[next_block_index_param.i][next_block_index_param.j].t.x_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].t.y_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].t.x_e,
-                           maze[next_block_index_param.i][next_block_index_param.j].t.y_e,
-                           next_block_t_to_draw),
-        Single_BlockBorder(maze[next_block_index_param.i][next_block_index_param.j].b.x_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].b.y_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].b.x_e,
-                           maze[next_block_index_param.i][next_block_index_param.j].b.y_e,
-                           next_block_b_to_draw),
-        Single_BlockBorder(maze[next_block_index_param.i][next_block_index_param.j].l.x_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].l.y_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].l.x_e,
-                           maze[next_block_index_param.i][next_block_index_param.j].l.y_e,
-                           next_block_l_to_draw),
-        Single_BlockBorder(maze[next_block_index_param.i][next_block_index_param.j].r.x_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].r.y_b,
-                           maze[next_block_index_param.i][next_block_index_param.j].r.x_e,
-                           maze[next_block_index_param.i][next_block_index_param.j].r.y_e,
-                           next_block_r_to_draw))
+    reset_border_to_draw(maze_param, current_block_index_param,
+                         current_block_t_to_draw, current_block_b_to_draw,
+                         current_block_l_to_draw, current_block_r_to_draw)
+    reset_border_to_draw(maze_param, next_block_index_param,
+                         next_block_t_to_draw, next_block_b_to_draw,
+                         next_block_l_to_draw, next_block_r_to_draw)
 
 
-def get_next_start_block(created_paths_param: dict, current_path_id_param, prioritise_current_path_param,
-                         maze_param, maze_path_param):
+def get_next_start_block(maze_param, maze_path_param):
     if print_func_name:
         print('function: {}'.format(sys._getframe().f_code.co_name))
 
     global total_rows
     global total_cols
-    not_spanoff_pairs = list()
 
-    # if prioritise_current_path_param:
-    #     block_index_neighborpaths_pairs = created_paths_param[current_path_id_param]
-    #     not_spanoff_pairs = get_not_spanoff_pair(block_index_neighborpaths_pairs)
-
-    if len(not_spanoff_pairs) == 0:
-        for k, v in created_paths_param.items():
-            not_spanoff_pairs = get_not_spanoff_pair(v)
-            if len(not_spanoff_pairs) > 0:
-                break
-
-    # pick a block on the path to span off if available, otherwise, pick another block in the field
-    candidate_spanoff_block_index = None
     new_start = None
-    if len(not_spanoff_pairs) > 0:
-        list_to_randomise = list(range(len(not_spanoff_pairs)))
-        candidate_pair = not_spanoff_pairs[random.choice(list_to_randomise)]
-        candidate_spanoff_block_index = Block_Index(candidate_pair.block_index.i, candidate_pair.block_index.j)
-        new_start = get_randomized_new_start_index(candidate_pair)
-        print('just calculated start index for the next path, start index = {}, about to break'.format(new_start))
+    not_asigned_block_list = list()
+    for i in range(total_rows):
+        for j in range(total_cols):
+            if maze_path_param[i][j] == 0:
+                not_asigned_block_list.append(Block_Index(i, j))
+    print('not_asigned_block_list={}'.format(not_asigned_block_list))
+    block_index_list_to_randomise = list(range(len(not_asigned_block_list)))
+    print('block_index_list_to_randomise={}'.format(block_index_list_to_randomise))
+    new_start = not_asigned_block_list[random.choice(block_index_list_to_randomise)]
+    print('new_start={}'.format(new_start))
 
-    # didn't find a new start from existing paths, randomly pick one that hasn't been asigned
-    if new_start == None:
-        not_asigned_block_list = list()
-        # exhausted the blocks on all paths, and all span off, randomly pick one from blocks that
-        # haven't been asgined to a path yet
-        found = False
-        for i in range(total_rows):
-            for j in range(total_cols):
-                if maze_path_param[i][j] == 0:
-                    not_asigned_block_list.append(Block_Index(i, j))
-        print('not_asigned_block_list={}'.format(not_asigned_block_list))
-        block_index_list_to_randomise = list(range(len(not_asigned_block_list)))
-        print('block_index_list_to_randomise={}'.format(block_index_list_to_randomise))
-        new_start = not_asigned_block_list[random.choice(block_index_list_to_randomise)]
-        print('new_start={}'.format(new_start))
+    # check the four nrighbor to see if they aveh been asigned to a path
+    possible_borders_to_open, open_border = check_possible_borders_to_open(new_start, maze_param, maze_path_param)
 
-        # check the four nrighbor to see if they aveh been asigned to a path
-        possible_borders_to_open = list()
-        if new_start.i-1 >= 0 and \
-            maze_path_param[new_start.i-1][new_start.j] > 0 and \
-            maze_param[new_start.i-1][new_start.j].b.to_draw == 1 and \
-            maze_param[new_start.i][new_start.j].t.to_draw == 1:
-                possible_borders_to_open.append('t')
-        elif new_start.i+1 < total_rows and \
-            maze_path_param[new_start.i+1][new_start.j] > 0 and \
-            maze_param[new_start.i+1][new_start.j].t.to_draw == 1 and \
-            maze_param[new_start.i][new_start.j].b.to_draw == 1:
-                possible_borders_to_open.append('b')
-        elif new_start.j-1 >= 0 and \
-            maze_path_param[new_start.i][new_start.j-1] > 0 and \
-            maze_param[new_start.i][new_start.j-1].r.to_draw == 1 and \
-            maze_param[new_start.i][new_start.j].l.to_draw == 1:
-                possible_borders_to_open.append('l')
-        elif new_start.j+1 < total_cols and \
-            maze_path_param[new_start.i][new_start.j+1] > 0 and \
-            maze_param[new_start.i][new_start.j+1].l.to_draw == 1 and \
-            maze_param[new_start.i][new_start.j].r.to_draw == 1:
-                possible_borders_to_open.append('r')
+    # if all four neighbors are assigned to a apth, no need to start a walk, just open a border
+    if open_border:
+        border_to_open = get_randomized_value_from_possible_values(possible_borders_to_open)
+        maze_param, maze_path_param = update_border(new_start, border_to_open, maze_param, maze_path_param)
+        # done, no need to carry on the current walk
+        return None, maze_param, maze_path_param
 
-        # if all four neighbors are assigned to a apth, no need to start a walk, just open a border
-        if len(possible_borders_to_open) == 4:
-            border_to_open = get_randomized_value_from_possible_values(possible_borders_to_open)
-            maze_param, maze_path_param = update_border(new_start, border_to_open, maze_param, maze_path_param)
-            # done, no need to carry on the current walk
-            return None, None, maze_param, maze_path_param
+    return new_start, maze_param, maze_path_param
 
-    # return the candidate_spanoff_block_index from which the new_start span off because we would want
-    # the border between the two blocks set not to draw,
-    # note, if we randomly pick one that is not in a path, NO need to check if any neighbor of the freshely
-    # picked one is included in a path, because in the code above, we first exhaust all the blocks on any path
-    # before randomly picking one
-    return new_start, candidate_spanoff_block_index, maze_param, maze_path_param
+
+def check_possible_borders_to_open(block_index_param, maze_param, maze_path_param):
+    possible_borders_to_open = list()
+    if block_index_param.i - 1 >= 0 and \
+            maze_path_param[block_index_param.i - 1][block_index_param.j] > 0 and \
+            maze_param[block_index_param.i - 1][block_index_param.j].b.to_draw == 1 and \
+            maze_param[block_index_param.i][block_index_param.j].t.to_draw == 1:
+        possible_borders_to_open.append('t')
+    if block_index_param.i + 1 < total_rows and \
+            maze_path_param[block_index_param.i + 1][block_index_param.j] > 0 and \
+            maze_param[block_index_param.i + 1][block_index_param.j].t.to_draw == 1 and \
+            maze_param[block_index_param.i][block_index_param.j].b.to_draw == 1:
+        possible_borders_to_open.append('b')
+    if block_index_param.j - 1 >= 0 and \
+            maze_path_param[block_index_param.i][block_index_param.j - 1] > 0 and \
+            maze_param[block_index_param.i][block_index_param.j - 1].r.to_draw == 1 and \
+            maze_param[block_index_param.i][block_index_param.j].l.to_draw == 1:
+        possible_borders_to_open.append('l')
+    if block_index_param.j + 1 < total_cols and \
+            maze_path_param[block_index_param.i][block_index_param.j + 1] > 0 and \
+            maze_param[block_index_param.i][block_index_param.j + 1].l.to_draw == 1 and \
+            maze_param[block_index_param.i][block_index_param.j].r.to_draw == 1:
+        possible_borders_to_open.append('r')
+
+    row_edge = False
+    col_edge = False
+    if block_index_param.i == 0 or block_index_param.i == total_rows-1:
+        row_edge = True
+    if block_index_param.j == 0 or block_index_param.j == total_cols-1:
+        col_edge = True
+
+    open_border = False
+    if row_edge and col_edge and len(possible_borders_to_open) == 2:
+        open_border = True
+    elif row_edge and not col_edge and len(possible_borders_to_open) == 3:
+        open_border = True
+    elif not row_edge and col_edge and len(possible_borders_to_open) == 3:
+        open_border = True
+    elif not row_edge and not col_edge and len(possible_borders_to_open) == 4:
+        open_border = True
+
+    return possible_borders_to_open, open_border
 
 
 def update_border(new_start_param, border_to_open_param, maze_param, maze_path_param):
     if border_to_open_param == 't':
-        maze_param[new_start_param.i][new_start_param.j].t.to_draw = 0
-        maze_param[new_start_param.i-1][new_start_param.j].b.to_draw = 0
+        open_top_border(new_start_param, maze_param)
         maze_path_param[new_start_param.i][new_start_param.j] = \
             maze_path_param[new_start_param.i - 1][new_start_param.j]
     elif border_to_open_param == 'b':
-        maze_param[new_start_param.i][new_start_param.j].b.to_draw = 0
-        maze_param[new_start_param.i+1][new_start_param.j].t.to_draw = 0
+        open_bottom_border(new_start_param, maze_param)
         maze_path_param[new_start_param.i][new_start_param.j] = \
             maze_path_param[new_start_param.i+1][new_start_param.j]
     elif border_to_open_param == 'l':
-        maze_param[new_start_param.i][new_start_param.j].l.to_draw = 0
-        maze_param[new_start_param.i][new_start_param.j-1].r.to_draw = 0
+        open_left_border(new_start_param, maze_param)
         maze_path_param[new_start_param.i][new_start_param.j] = \
             maze_path_param[new_start_param.i][new_start_param.j-1]
     elif border_to_open_param == 'r':
-        maze_param[new_start_param.i][new_start_param.j].r.to_draw = 0
-        maze_param[new_start_param.i][new_start_param.j+1].l.to_draw = 0
+        open_right_border(new_start_param, maze_param)
         maze_path_param[new_start_param.i][new_start_param.j] = \
             maze_path_param[new_start_param.i][new_start_param.j+1]
     return maze_param, maze_path_param
+
+
+def reset_border_to_draw(maze_param, block_index_param, block_t_to_draw_param, block_b_to_draw_param,
+                         block_l_to_draw_param, block_r_to_draw_param):
+    maze_param[block_index_param.i][block_index_param.j] = Single_Block_With_Four_Borders(
+        Single_BlockBorder(maze_param[block_index_param.i][block_index_param.j].t.x_b,
+                           maze_param[block_index_param.i][block_index_param.j].t.y_b,
+                           maze_param[block_index_param.i][block_index_param.j].t.x_e,
+                           maze_param[block_index_param.i][block_index_param.j].t.y_e,
+                           block_t_to_draw_param),
+        Single_BlockBorder(maze_param[block_index_param.i][block_index_param.j].b.x_b,
+                           maze_param[block_index_param.i][block_index_param.j].b.y_b,
+                           maze_param[block_index_param.i][block_index_param.j].b.x_e,
+                           maze_param[block_index_param.i][block_index_param.j].b.y_e,
+                           block_b_to_draw_param),
+        Single_BlockBorder(maze_param[block_index_param.i][block_index_param.j].l.x_b,
+                           maze_param[block_index_param.i][block_index_param.j].l.y_b,
+                           maze_param[block_index_param.i][block_index_param.j].l.x_e,
+                           maze_param[block_index_param.i][block_index_param.j].l.y_e,
+                           block_l_to_draw_param),
+        Single_BlockBorder(maze_param[block_index_param.i][block_index_param.j].r.x_b,
+                           maze_param[block_index_param.i][block_index_param.j].r.y_b,
+                           maze_param[block_index_param.i][block_index_param.j].r.x_e,
+                           maze_param[block_index_param.i][block_index_param.j].r.y_e,
+                           block_r_to_draw_param))
+
+
+def open_top_border(new_start_param, maze_param):
+    # maze_param[new_start_param.i][new_start_param.j].t.to_draw = 0
+    # maze_param[new_start_param.i-1][new_start_param.j].b.to_draw = 0
+
+    new_start_t_to_draw = 0
+    new_start_b_to_draw = maze_param[new_start_param.i][new_start_param.j].b.to_draw
+    new_start_l_to_draw = maze_param[new_start_param.i][new_start_param.j].l.to_draw
+    new_start_r_to_draw = maze_param[new_start_param.i][new_start_param.j].r.to_draw
+
+    new_start_neighbor_t_to_draw = maze_param[new_start_param.i-1][new_start_param.j].t.to_draw
+    new_start_neighbor_b_to_draw = 0
+    new_start_neighbor_l_to_draw = maze_param[new_start_param.i-1][new_start_param.j].l.to_draw
+    new_start_neighbor_r_to_draw = maze_param[new_start_param.i-1][new_start_param.j].r.to_draw
+
+    reset_border_to_draw(maze_param, new_start_param,
+                         new_start_t_to_draw, new_start_b_to_draw, new_start_l_to_draw, new_start_r_to_draw)
+    reset_border_to_draw(maze_param, Block_Index(new_start_param.i-1, new_start_param.j),
+                         new_start_neighbor_t_to_draw, new_start_neighbor_b_to_draw,
+                         new_start_neighbor_l_to_draw, new_start_neighbor_r_to_draw)
+
+
+def open_bottom_border(new_start_param, maze_param):
+    # maze_param[new_start_param.i][new_start_param.j].b.to_draw = 0
+    # maze_param[new_start_param.i+1][new_start_param.j].t.to_draw = 0
+
+    new_start_t_to_draw = maze_param[new_start_param.i][new_start_param.j].t.to_draw
+    new_start_b_to_draw = 0
+    new_start_l_to_draw = maze_param[new_start_param.i][new_start_param.j].l.to_draw
+    new_start_r_to_draw = maze_param[new_start_param.i][new_start_param.j].r.to_draw
+
+    new_start_neighbor_t_to_draw = 0
+    new_start_neighbor_b_to_draw = maze_param[new_start_param.i+1][new_start_param.j].b.to_draw
+    new_start_neighbor_l_to_draw = maze_param[new_start_param.i+1][new_start_param.j].l.to_draw
+    new_start_neighbor_r_to_draw = maze_param[new_start_param.i+1][new_start_param.j].r.to_draw
+
+    reset_border_to_draw(maze_param, new_start_param,
+                         new_start_t_to_draw, new_start_b_to_draw, new_start_l_to_draw, new_start_r_to_draw)
+    reset_border_to_draw(maze_param, Block_Index(new_start_param.i+1, new_start_param.j),
+                         new_start_neighbor_t_to_draw, new_start_neighbor_b_to_draw,
+                         new_start_neighbor_l_to_draw, new_start_neighbor_r_to_draw)
+
+
+def open_left_border(new_start_param, maze_param):
+    # maze_param[new_start_param.i][new_start_param.j].l.to_draw = 0
+    # maze_param[new_start_param.i][new_start_param.j-1].r.to_draw = 0
+
+    new_start_t_to_draw = maze_param[new_start_param.i][new_start_param.j].t.to_draw
+    new_start_b_to_draw = maze_param[new_start_param.i][new_start_param.j].b.to_draw
+    new_start_l_to_draw = 0
+    new_start_r_to_draw = maze_param[new_start_param.i][new_start_param.j].r.to_draw
+
+    new_start_neighbor_t_to_draw = maze_param[new_start_param.i][new_start_param.j-1].t.to_draw
+    new_start_neighbor_b_to_draw = maze_param[new_start_param.i][new_start_param.j-1].b.to_draw
+    new_start_neighbor_l_to_draw = maze_param[new_start_param.i][new_start_param.j-1].l.to_draw
+    new_start_neighbor_r_to_draw = 0
+
+    reset_border_to_draw(maze_param, new_start_param,
+                         new_start_t_to_draw, new_start_b_to_draw, new_start_l_to_draw, new_start_r_to_draw)
+    reset_border_to_draw(maze_param, Block_Index(new_start_param.i, new_start_param.j-1),
+                         new_start_neighbor_t_to_draw, new_start_neighbor_b_to_draw,
+                         new_start_neighbor_l_to_draw, new_start_neighbor_r_to_draw)
+
+
+def open_right_border(new_start_param, maze_param):
+    # maze_param[new_start_param.i][new_start_param.j].r.to_draw = 0
+    # maze_param[new_start_param.i][new_start_param.j+1].l.to_draw = 0
+
+    new_start_t_to_draw = maze_param[new_start_param.i][new_start_param.j].t.to_draw
+    new_start_b_to_draw = maze_param[new_start_param.i][new_start_param.j].b.to_draw
+    new_start_l_to_draw = maze_param[new_start_param.i][new_start_param.j].l.to_draw
+    new_start_r_to_draw = 0
+
+    new_start_neighbor_t_to_draw = maze_param[new_start_param.i][new_start_param.j+1].b.to_draw
+    new_start_neighbor_b_to_draw = maze_param[new_start_param.i][new_start_param.j+1].b.to_draw
+    new_start_neighbor_l_to_draw = 0
+    new_start_neighbor_r_to_draw = maze_param[new_start_param.i][new_start_param.j+1].r.to_draw
+
+    reset_border_to_draw(maze_param, new_start_param,
+                         new_start_t_to_draw, new_start_b_to_draw, new_start_l_to_draw, new_start_r_to_draw)
+    reset_border_to_draw(maze_param, Block_Index(new_start_param.i, new_start_param.j+1),
+                         new_start_neighbor_t_to_draw, new_start_neighbor_b_to_draw,
+                         new_start_neighbor_l_to_draw, new_start_neighbor_r_to_draw)
 
 
 def get_not_spanoff_pair(block_index_neighborpaths_pairs_param):
@@ -801,39 +818,29 @@ def main():
 
     # set_maze_to_draw_random(maze)
     to_creat_path_id = 1
-    prev_path_id = 1
-    created_paths = dict()
     blocks_in_path_percentage = 0.0
-    created_path_block_index_neighborpaths_pairs, maze, maze_path, maze_path_text = \
+    maze, maze_path, maze_path_text = \
         create_path(entrance, to_creat_path_id, special_rules_for_path, maze, maze_path, maze_path_text)
-    # if created_path_block_index_neighborpaths_pairs:
-    created_paths[to_creat_path_id] = created_path_block_index_neighborpaths_pairs
     blocks_in_path_percentage = get_blocks_in_path_percentage(maze_path)
     print('Just created the first path, \nblocks_in_path_percentage = {}'.format(blocks_in_path_percentage))
     while blocks_in_path_percentage < block_in_path_percentage_threshold:
-        # Note, get_next_start_block cralwing through all the generated paths
-        # randomly pick a block that has NOT been span off to form a new path,
-        # and use it as the new starting block for a new path, and when all of
-        # those blocks are exhausted, then randomly chose one that has not been
-        # asignned to a path, also check if all its neighobr blocks have a path_id
-        # do not start a new path, just simply randomly? choose a border to open
-        new_start, current_spanoff_block_index, maze, maze_path = get_next_start_block(
-            created_paths, prev_path_id, global_prioritise_current_path, maze, maze_path)
+        # Note, once randomly picked up a block, get_next_start_block also check if all the block's
+        # neighobr blocks have a path_id, if so, do not start a new path, just simply randomly choose
+        # a border to open, hence return maxe, and maze_path, as they are doing to be updated
+        new_start, maze, maze_path = get_next_start_block(maze, maze_path)
         if new_start:
             to_creat_path_id += 1
             print('just before creating the next path, new_start index = {}, to_creat_path_id={}'.format(
                 new_start, to_creat_path_id))
-            created_path_block_index_neighborpaths_pairs, maze, maze_path, maze_path_text = \
+            maze, maze_path, maze_path_text = \
                 create_path(new_start, to_creat_path_id, special_rules_for_path, maze, maze_path, maze_path_text)
             # if created_path_block_index_neighborpaths_pairs:
-            created_paths[to_creat_path_id] = created_path_block_index_neighborpaths_pairs
             blocks_in_path_percentage = get_blocks_in_path_percentage(maze_path)
             print('blocks_in_path_percentage={}'.format(blocks_in_path_percentage))
-            prev_path_id = to_creat_path_id
-            # note, we have successfully span off a path, not connecting the two paths by removing the border
-            # between the new_start block and the block that it has been span off from
-            if current_spanoff_block_index:
-                update_to_draw_for_current_and_next_block(current_spanoff_block_index, new_start, maze)
+            # # note, we have successfully span off a path, not connecting the two paths by removing the border
+            # # between the new_start block and the block that it has been span off from
+            # if current_spanoff_block_index:
+            #     update_to_draw_for_current_and_next_block(current_spanoff_block_index, new_start, maze)
         # else:
         #     print('Bah, cannot find the next starting point, give up....')
 
