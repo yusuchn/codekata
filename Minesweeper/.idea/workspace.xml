@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/generaltools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/minesweeper_grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tkSimpleDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/tkSimpleDialog.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +23,7 @@
     <SUITE FILE_PATH="coverage/AlphaPuzzle$alphasolver.coverage" NAME="alphasolver Coverage Results" MODIFIED="1566324832131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlphaPuzzle$testjson.coverage" NAME="testjson Coverage Results" MODIFIED="1563447328921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlphaPuzzle$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1565853717574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Minesweeper$minesweeper_grid.coverage" NAME="minesweeper_grid Coverage Results" MODIFIED="1576578465475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Minesweeper$minesweeper_grid.coverage" NAME="minesweeper_grid Coverage Results" MODIFIED="1576681740770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -34,18 +37,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minesweeper_1.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minesweeper_2.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
+            <state relative-caret-position="168">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
@@ -61,13 +55,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
+        <entry file="file://$PROJECT_DIR$/PlotGameBoard_allPlayerTypes_noRemote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="280">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="56" column="17" lean-forward="true" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -75,10 +75,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/minesweeper_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="-56">
               <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,15 +116,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/letter_board.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/generaltools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="1572" column="87" lean-forward="true" selection-start-line="1572" selection-start-column="87" selection-end-line="1572" selection-end-column="87" />
+            <state relative-caret-position="12">
+              <caret line="1515" column="25" selection-start-line="1515" selection-start-column="4" selection-end-line="1515" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -146,6 +153,8 @@
       <find>var_game_file</find>
       <find>var_other_file</find>
       <find>grid_param[i][j]</find>
+      <find>click_another</find>
+      <find>click_me</find>
     </findStrings>
     <replaceStrings>
       <replace>block_param</replace>
@@ -173,16 +182,17 @@
         <option value="$PROJECT_DIR$/minesweeper_2.json" />
         <option value="$PROJECT_DIR$/minesweeper_solver.py" />
         <option value="$PROJECT_DIR$/MyDialog.py" />
-        <option value="$PROJECT_DIR$/minesweeper_grid.py" />
+        <option value="$PROJECT_DIR$/tkSimpleDialog.py" />
         <option value="$PROJECT_DIR$/generaltools.py" />
+        <option value="$PROJECT_DIR$/minesweeper_grid.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1304" />
-    <option name="y" value="653" />
+    <option name="x" value="1279" />
+    <option name="y" value="508" />
     <option name="width" value="1261" />
-    <option name="height" value="752" />
+    <option name="height" value="869" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -367,12 +377,12 @@
       <workItem from="1565360200425" duration="59584000" />
       <workItem from="1566211237392" duration="8999000" />
       <workItem from="1566322744807" duration="6352000" />
-      <workItem from="1576517192042" duration="28960000" />
+      <workItem from="1576517192042" duration="46195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="299343000" />
+    <option name="totallyTimeSpent" value="316578000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -384,16 +394,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1304" y="653" width="1261" height="752" extended-state="0" />
+    <frame x="1279" y="508" width="1261" height="869" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="DB Browser" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09408826" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.037468776" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="DB Execution Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32958803" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14862682" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.097826086" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4528536" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -449,6 +460,10 @@
           <line>201</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/minesweeper_grid.py</url>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -470,11 +485,6 @@
         <state relative-caret-position="629">
           <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4805" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../CodeKatas/PlotGameBoard.py" />
@@ -590,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minesweeper_2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/updated_board_floating_number_letters.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7" />
@@ -619,6 +622,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="56" column="17" lean-forward="true" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minesweeper_2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/minesweeper.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -626,9 +643,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PlotGameBoard_allPlayerTypes_noRemote.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/minesweeper_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="-56">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -636,22 +660,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
+    <entry file="file://$PROJECT_DIR$/generaltools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        <state relative-caret-position="12">
+          <caret line="1515" column="25" selection-start-line="1515" selection-start-column="4" selection-end-line="1515" selection-end-column="25" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generaltools.py">
+    <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="1572" column="87" lean-forward="true" selection-start-line="1572" selection-start-column="87" selection-end-line="1572" selection-end-column="87" />
+        <state relative-caret-position="140">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

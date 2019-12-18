@@ -1500,15 +1500,15 @@ Single_Block_With_Four_Borders = namedtuple('Single_Block_With_Four_Borders', ['
 
 Block_Index = namedtuple('Block_Index', ['i', 'j'])
 
-total_rows = 18
-total_cols = 18
-# width of each block
-w = 10
-
-text_shift = int(w/2)
-root_width = w*total_cols+6
-root_height = w*total_rows+6
-root_geometry_str = '{}x{}'.format(root_width, root_height)
+# total_rows = 18
+# total_cols = 18
+# # width of each block
+# w = 10
+#
+# text_shift = int(w/2)
+# root_width = w*total_cols+6
+# root_height = w*total_rows+6
+# root_geometry_str = '{}x{}'.format(root_width, root_height)
 
 # below is to initialise the maze, set all the border coordinate to (0, 0, 0, 0)
 # and each border to_draw flag set to 1, ie. draw
@@ -1524,9 +1524,11 @@ def reset_grid_properties(total_rows_param, total_cols_param, w_param, default_t
         Single_BlockBorder(0, 0, 0, 0, 0))] * total_cols_param for n in range(total_rows_param)]
 
     # note, w_param is the width of each block
-    x, y = 2, 2
-    for i in range(total_rows):
-        for j in range(total_cols):
+    x_offset = 2
+    y_offset = 2
+    x, y = x_offset, y_offset
+    for i in range(total_rows_param):
+        for j in range(total_cols_param):
             # Note, for namedtuple, cannot set atribute value, override is the only option
             # Note, x -> col, y -> row
             grid[i][j] = Single_Block_With_Four_Borders(
@@ -1538,9 +1540,30 @@ def reset_grid_properties(total_rows_param, total_cols_param, w_param, default_t
         y = y + w_param
         x = 2
 
-    return grid
+    return grid, x_offset, y_offset
 
-def draw_grid_use_block(canvas_param, grid_param, grid_text_param, text_shiift_param,
+
+def initialise_grid_text(default_char, total_rows_param, total_cols_param, print_func_name=False):
+    if print_func_name:
+        print('function: {}'.format(sys._getframe().f_code.co_name))
+
+    grid_text = [[default_char] * total_cols_param for m in range(total_rows_param)]
+
+    return grid_text
+
+
+def reset_grid_text(default_char, grid_text_param, print_func_name=False):
+    if print_func_name:
+        print('function: {}'.format(sys._getframe().f_code.co_name))
+
+    total_rows = len(grid_text_param)
+    total_cols = len(grid_text_param[0])
+    for i in range(total_rows):
+        for j in range(total_cols):
+            grid_text_param[i][j] = default_char
+
+
+def draw_grid_use_block(canvas_param, grid_param, grid_text_param, text_shift_param,
                         draw_text_param=True, print_func_name=False):
     if print_func_name:
         print('function: {}'.format(sys._getframe().f_code.co_name))
@@ -1551,16 +1574,18 @@ def draw_grid_use_block(canvas_param, grid_param, grid_text_param, text_shiift_p
     # different properties, the grosss efect is that the obrder has been taken out of drawing
     # by one blcok could be added back in by another block, block value set the route,
     # >0: in a route, =0 not included in any route
+    total_rows = len(grid_param)
+    total_cols = len(grid_param[0])
     for i in range(total_rows):
         for j in range(total_cols):
             block_index = Block_Index(i, j)
-            draw_block(canvas_param, block_index, grid_param[i][j], grid_text_param[i][j], text_shiift_param,
+            draw_block(canvas_param, block_index, grid_param[i][j], grid_text_param[i][j], text_shift_param,
                        False, draw_text_param, print_func_name)
 
     canvas_param.pack(fill=BOTH, expand=1)
 
 
-def draw_block(canvas_param, block_index: Block_Index, block_param, block_text_param, text_shiift_param,
+def draw_block(canvas_param, block_index: Block_Index, block_param, block_text_param, text_shift_param,
                refresh_block_param=True, draw_text_param=True, print_func_name=False):
     
     if print_func_name:
@@ -1584,12 +1609,12 @@ def draw_block(canvas_param, block_index: Block_Index, block_param, block_text_p
         canvas_param.create_line(block_param.r.x_b, block_param.r.y_b,
                                  block_param.r.x_e, block_param.r.y_e, tag=tag_str)
     if draw_text_param:
-        text_x = block_param.t.x_b + text_shiift_param
-        text_y = block_param.t.y_b + text_shiift_param
-        font_size = int(w / 2) + 1
+        text_x = block_param.t.x_b + text_shift_param
+        text_y = block_param.t.y_b + text_shift_param
+        w = block_param.t.x_e - block_param.t.x_b   # assuming the blocks are square
+        font_size = int((block_param.t.x_e - block_param.t.x_b) / 2) + 1
         font_str = "Arial {}".format(font_size)
         text_to_draw = block_text_param
-        # print('text_to_draw={}'.format(text_to_draw))
         canvas_param.create_text(text_x, text_y, font=font_str, text=text_to_draw, tag=tag_str)
 
     if refresh_block_param:
