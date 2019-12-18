@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e95b989-d2f4-4e1c-a8a9-2fdd9ded9700" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/maze_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +14,8 @@
     <SUITE FILE_PATH="coverage/Breakout$game.coverage" NAME="game Coverage Results" MODIFIED="1572374631272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Breakout$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1574103062353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Breakout$control_win.coverage" NAME="control_win Coverage Results" MODIFIED="1572374635286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MazeGenerator$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1575288460824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MazeGenerator$maze_generator.coverage" NAME="maze_generator Coverage Results" MODIFIED="1576259142941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MazeGenerator$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1576570157422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MazeGenerator$maze_generator.coverage" NAME="maze_generator Coverage Results" MODIFIED="1576572594017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="MazeGenerator" />
@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generaltools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="1463" selection-start-line="1463" selection-end-line="1463" />
+            <state relative-caret-position="6118">
+              <caret line="1403" column="20" lean-forward="true" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/maze_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="572" column="89" lean-forward="true" selection-start-line="572" selection-start-column="89" selection-end-line="572" selection-end-column="89" />
+            <state relative-caret-position="364">
+              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-end-line="47" selection-end-column="51" />
               <folding>
                 <element signature="e#11#29#0" expanded="true" />
               </folding>
@@ -57,7 +57,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>test_or</find>
       <find>special_rule_for_path_1</find>
       <find>maze_path</find>
       <find>draw_path</find>
@@ -87,6 +86,7 @@
       <find>update_border</find>
       <find>new_start</find>
       <find>check_possible_borders_to_open</find>
+      <find>Line_Corrd</find>
     </findStrings>
     <replaceStrings>
       <replace>reset_maze_properties</replace>
@@ -126,10 +126,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1265" />
-    <option name="y" value="431" />
+    <option name="x" value="28" />
+    <option name="y" value="418" />
     <option name="width" value="1290" />
-    <option name="height" value="903" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -158,7 +158,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/suyu/CodeKatas/GitHubRepos/nwalker/codekata-gogen/gogen2.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Minesweeper" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -297,12 +297,12 @@
       <workItem from="1574426331917" duration="110138000" />
       <workItem from="1575277117721" duration="80573000" />
       <workItem from="1575966889689" duration="1862000" />
-      <workItem from="1575999249290" duration="39909000" />
+      <workItem from="1575999249290" duration="53953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="513557000" />
+    <option name="totallyTimeSpent" value="527601000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -314,11 +314,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1265" y="431" width="1290" height="903" extended-state="0" />
-    <editor active="true" />
+    <frame x="28" y="418" width="1290" height="970" extended-state="0" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5007215" side_tool="true" weight="0.03106126" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4992785" visible="true" weight="0.03089431" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4992785" visible="true" weight="0.05609756" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
@@ -329,7 +328,7 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.11818182" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.18040621" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.420398" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -351,11 +350,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/generaltools.py</url>
-          <line>479</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/maze_generator.py</url>
           <line>842</line>
           <option name="timeStamp" value="9" />
@@ -376,15 +370,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../BattleShips/MyDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tkSimpleDialog.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -537,13 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="2503" selection-start-line="2503" selection-end-line="2503" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/random.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7" />
@@ -594,18 +572,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/generaltools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="1463" selection-start-line="1463" selection-end-line="1463" />
+        <state relative-caret-position="6118">
+          <caret line="1403" column="20" lean-forward="true" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/2066509784/sys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="464" column="4" selection-start-line="464" selection-start-column="4" selection-end-line="464" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="2002" column="8" selection-start-line="2002" selection-start-column="8" selection-end-line="2002" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/maze_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="572" column="89" lean-forward="true" selection-start-line="572" selection-start-column="89" selection-end-line="572" selection-end-column="89" />
+        <state relative-caret-position="364">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-end-line="47" selection-end-column="51" />
           <folding>
             <element signature="e#11#29#0" expanded="true" />
           </folding>
