@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/generaltools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/minesweeper_grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkSimpleDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/tkSimpleDialog.py" afterDir="false" />
-    </list>
+    <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,12 +372,12 @@
       <workItem from="1565360200425" duration="59584000" />
       <workItem from="1566211237392" duration="8999000" />
       <workItem from="1566322744807" duration="6352000" />
-      <workItem from="1576517192042" duration="46195000" />
+      <workItem from="1576517192042" duration="46522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316578000" />
+    <option name="totallyTimeSpent" value="316905000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
