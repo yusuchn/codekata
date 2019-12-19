@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="" />
+    <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/minesweeper_grid.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +21,7 @@
     <SUITE FILE_PATH="coverage/AlphaPuzzle$alphasolver.coverage" NAME="alphasolver Coverage Results" MODIFIED="1566324832131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlphaPuzzle$testjson.coverage" NAME="testjson Coverage Results" MODIFIED="1563447328921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlphaPuzzle$generaltools.coverage" NAME="generaltools Coverage Results" MODIFIED="1565853717574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Minesweeper$minesweeper_grid.coverage" NAME="minesweeper_grid Coverage Results" MODIFIED="1576681740770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Minesweeper$minesweeper_grid.coverage" NAME="minesweeper_grid Coverage Results" MODIFIED="1576694098600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -82,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="546">
+              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -184,10 +187,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1279" />
-    <option name="y" value="508" />
+    <option name="x" value="1270" />
+    <option name="y" value="463" />
     <option name="width" value="1261" />
-    <option name="height" value="869" />
+    <option name="height" value="898" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -372,12 +375,12 @@
       <workItem from="1565360200425" duration="59584000" />
       <workItem from="1566211237392" duration="8999000" />
       <workItem from="1566322744807" duration="6352000" />
-      <workItem from="1576517192042" duration="46522000" />
+      <workItem from="1576517192042" duration="49328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316905000" />
+    <option name="totallyTimeSpent" value="319711000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,7 +392,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1279" y="508" width="1261" height="869" extended-state="0" />
+    <frame x="1270" y="463" width="1261" height="898" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="DB Browser" />
@@ -399,7 +402,7 @@
       <window_info anchor="bottom" id="DB Execution Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32958803" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.097826086" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.09411765" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4528536" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -454,10 +457,6 @@
           <url>file://$PROJECT_DIR$/alphasolver.py</url>
           <line>201</line>
           <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/minesweeper_grid.py</url>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -667,8 +666,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="546">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
