@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e95b989-d2f4-4e1c-a8a9-2fdd9ded9700" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Minesweeper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Minesweeper/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/generaltools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Minesweeper/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/minesweeper_grid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generaltools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6118">
-              <caret line="1403" column="20" lean-forward="true" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
+            <state relative-caret-position="-7">
+              <caret line="1403" column="20" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -38,7 +39,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/maze_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
+            <state relative-caret-position="157">
               <caret line="87" column="61" selection-start-line="87" selection-end-line="87" selection-end-column="66" />
               <folding>
                 <element signature="e#11#29#0" expanded="true" />
@@ -574,8 +575,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/generaltools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6118">
-          <caret line="1403" column="20" lean-forward="true" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
+        <state relative-caret-position="-7">
+          <caret line="1403" column="20" selection-start-line="1403" selection-start-column="20" selection-end-line="1403" selection-end-column="20" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -598,7 +599,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/maze_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
+        <state relative-caret-position="157">
           <caret line="87" column="61" selection-start-line="87" selection-end-line="87" selection-end-column="66" />
           <folding>
             <element signature="e#11#29#0" expanded="true" />

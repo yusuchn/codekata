@@ -1513,7 +1513,8 @@ Block_Index = namedtuple('Block_Index', ['i', 'j'])
 # below is to initialise the maze, set all the border coordinate to (0, 0, 0, 0)
 # and each border to_draw flag set to 1, ie. draw
 
-def reset_grid_properties(total_rows_param, total_cols_param, w_param, default_to_draw_param=0, print_func_name=False):
+def reset_grid_properties(total_rows_param, total_cols_param, w_param, canvas_offset_param,
+                          default_to_draw_param=0, print_func_name=False):
     if print_func_name:
         print('function: {}'.format(sys._getframe().f_code.co_name))
 
@@ -1524,8 +1525,8 @@ def reset_grid_properties(total_rows_param, total_cols_param, w_param, default_t
         Single_BlockBorder(0, 0, 0, 0, 0))] * total_cols_param for n in range(total_rows_param)]
 
     # note, w_param is the width of each block
-    x_offset = 2
-    y_offset = 2
+    x_offset = canvas_offset_param
+    y_offset = canvas_offset_param
     x, y = x_offset, y_offset
     for i in range(total_rows_param):
         for j in range(total_cols_param):
@@ -1538,7 +1539,7 @@ def reset_grid_properties(total_rows_param, total_cols_param, w_param, default_t
                 Single_BlockBorder(x+w_param, y, x+w_param, y+w_param, default_to_draw_param))
             x = x + w_param
         y = y + w_param
-        x = 2
+        x = canvas_offset_param
 
     return grid, x_offset, y_offset
 
