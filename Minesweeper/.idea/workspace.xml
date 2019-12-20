@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3750c7c9-9f87-41d2-bc7e-e429aae49199" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MazeGenerator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/minesweeper_grid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="165">
+              <caret line="76" column="31" lean-forward="true" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -187,10 +186,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1400" />
-    <option name="y" value="631" />
+    <option name="x" value="1377" />
+    <option name="y" value="541" />
     <option name="width" value="1149" />
-    <option name="height" value="768" />
+    <option name="height" value="840" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -375,12 +374,12 @@
       <workItem from="1565360200425" duration="59584000" />
       <workItem from="1566211237392" duration="8999000" />
       <workItem from="1566322744807" duration="6352000" />
-      <workItem from="1576517192042" duration="61629000" />
+      <workItem from="1576517192042" duration="72457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332012000" />
+    <option name="totallyTimeSpent" value="342840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -392,7 +391,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1400" y="631" width="1149" height="768" extended-state="0" />
+    <frame x="1377" y="541" width="1149" height="840" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="DB Browser" />
@@ -402,7 +401,7 @@
       <window_info anchor="bottom" id="DB Execution Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32958803" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19685039" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07072136" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30578512" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -671,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/minesweeper_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="165">
+          <caret line="76" column="31" lean-forward="true" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>

@@ -64,6 +64,45 @@ def mine_sweeping(block_index_param, mine_param, grid_text_param):
     return grid_text_param
 
 
+def brain_work(block_index_param, grid_text_param):
+    # evaluate grid_text to build a candiate to hit index list based on the numbers in the text
+    # then randomly chose one to hit
+    # note, this is the brain thinking, do not change anything, hit is the func above
+    # create a probability dict, keyed on block_index, value is the probability score,
+    # and as going though the grid, check the surrrounding 8 blocks of the current block,
+    # and if it is possible that any of the surrounding block is a mine, add one to the
+    # probability score to that particular surrouding block
+    total_rows = len(grid_text_param)
+    total_cols = len(grid_text_param[0])
+    candidate_hit_list = list()
+
+    for i in range(total_rows):
+        for j in range (total_cols):
+            block_index = Block_Index(i, j)
+
+            text = grid_text_param[i][j]
+            mine_count = 0
+            if text != '?'
+            if (i-1 >= 0 and j-1 >= 0 and grid_text_param[i-1][j-1] == '#'):
+                mine_count += 1
+            if i-1 >= 0  and grid_text_param[i-1][j] == '#':
+                mine_count += 1
+            if (i-1 >= 0 and j+1 < total_cols and grid_text_param[i-1][j+1] == '#'):
+                mine_count += 1
+            if (j+1 < total_cols and grid_text_param[i][j+1] == '#'):
+                mine_count += 1
+            if (i+1 < total_rows and j+1 < total_cols and grid_text_param[i+1][j+1] == '#'):
+                mine_count += 1
+            if (i+1 < total_rows and grid_text_param[i+1][j] == '#'):
+                mine_count += 1
+            if (i+1 < total_rows and j-1 >= 0 and grid_text_param[i+1][j-1] == '#'):
+                mine_count += 1
+            if (j-1 >= 0 and grid_text_param[i][j-1] == '#'):
+                mine_count += 1
+
+    return to_hit_block_index
+
+
 def on_right_mouse_click(event, grid_arg, grid_text_arg, canvas_arg, text_shift_arg):
     if messagebox.askyesno("Game", 'Restart?'):
         reset_grid_text('?', grid_text_arg)
