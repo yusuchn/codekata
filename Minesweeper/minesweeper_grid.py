@@ -29,8 +29,8 @@ def mine_sweeping(block_index_param, mine_param, grid_text_param):
     hit = mine_param[block_index_param.i][block_index_param.j]
     mine_count = 0
 
-    total_rows = len(grid_param)
-    total_cols = len(grid_param[0])
+    total_rows = len(mine_param)
+    total_cols = len(mine_param[0])
 
     if hit != '#':
         if (block_index_param.i-1 >= 0 and block_index_param.j-1 >= 0 and

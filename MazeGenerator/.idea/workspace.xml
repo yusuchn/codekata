@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e95b989-d2f4-4e1c-a8a9-2fdd9ded9700" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Minesweeper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Minesweeper/generaltools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/generaltools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Minesweeper/minesweeper_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Minesweeper/minesweeper_grid.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
